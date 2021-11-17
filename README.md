@@ -6,3 +6,5 @@ edi sa keyboard
 change from local
 
 will try to replicate 
+
+patay tayo jan
