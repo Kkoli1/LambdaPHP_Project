@@ -1,0 +1,145 @@
+.admin-assoc-choose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.choose{
+    width: 23%;
+    height: 55vh;
+    border: 1px solid #334756;
+    border-radius: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose img{
+    width: 150px;
+    height: 150px;
+}
+
+#admin-choose{
+    
+    margin-left:auto;
+    margin-right: 15px;
+    
+}
+
+#assoc-choose{
+    margin-left: 15px;
+    margin-right: auto;
+    
+}
+
+.choose-label-container{
+    border-style: solid;
+}
+
+.choose-label{
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 35px;
+    text-align: center;
+    margin-top: -60px;
+}
+
+.choose-button{
+    color: white;
+    border-style: solid;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: rgba(51, 71, 86,1);
+    margin-top: -60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out 0s;
+}
+
+.choose-button a{
+    text-decoration: none;
+    color: white;
+}
+
+.choose-button:hover{
+    background-color: rgba(51, 71, 86,0.8);
+}
+
+.image-container{
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container{
+    margin-top: 60px;
+}
+
+.form{
+    /* border: 1px solid black; */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submit-button{
+    background-color: rgba(51, 71, 86,1);
+    width: 40%;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+#register-button{
+    background-color: white;
+    color: #082032;
+    width: 40%;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #082032;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 36px;
+    height: 36px;
+}
+
+#register-button-link{
+    text-decoration: none;
+}
+
+.admin-login-img{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.back-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-button a{
+    text-decoration: none;
+    color: rgba(51, 71, 86,1);
+    font-size: 20px;
+}
+
+.back-button:hover{
+    text-decoration: underline;
+}
+
+.body{
+    background-color: black;
+}
+

@@ -1,0 +1,339 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #082032;
+    border: solid;
+    border-color: #082032;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-link{
+    text-decoration: none;
+}
+
+.logo-container{
+    display: grid;
+    grid-template-columns: 130px auto;
+    grid-template-rows: auto auto;
+    margin: 10px 0 10px 30px;
+    width: fit-content;
+}
+
+.logo-container img{
+    width: 120px;
+}
+
+.abc-mall{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    color: white;
+    height: fit-content;
+    padding-top: 23px;
+    padding-left: 10px;
+    letter-spacing: 5px;
+}
+
+.mall-slogan{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    height: fit-content;
+    color: white;
+    position: relative;
+    padding-left: 10px;
+    top: -14px;
+}
+
+.yellow-button button{
+    background-color: rgba(240, 165, 0,1);
+    transition: background-color 0.2s ease-in-out 0s;
+    font-size: medium;
+    border-radius: 20px;
+    height: 40px;
+    width: 220px;
+    margin-right: 10px;
+}
+
+.yellow-button button:hover{
+    background-color: rgba(240, 165, 0, 0.8);
+}
+
+.search-button{
+    display: flex;
+    width: 300px;
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 40px;
+    justify-content: center;
+}
+
+.search-button input{
+    width: 250px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-left: 15px;
+}
+
+.search-button input:focus{
+    outline: none;
+}
+
+.search-button input:focus::placeholder{
+    color: transparent;
+}
+
+.search-button img{
+    width: 20px;
+    height: 20px;
+    margin: auto 5px auto auto;
+}
+
+.search-button input::placeholder{
+    text-align: center;
+    color: white;
+}
+
+.nav-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    margin: 10px 20px 10px 0px;
+    height: 146px;
+}
+
+.icons{
+    display: flex;
+    align-content: center;
+}
+
+.icons button{
+    height: 30px;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+.icons button a{
+    text-decoration: none;
+    color: rgba(8, 32, 50, 1);
+} 
+
+.icons a img{
+    margin: 25px 10px 3px 0;
+}
+
+.main-article{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    border-radius: 50px;
+}
+
+.main-article-label{
+    background-color: #334756;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    color: white;
+    border:1px solid black;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.text{
+    height: fit-content;
+    margin-left: 35px;
+}
+
+.text h1{
+    font-size: 210%;
+}
+
+.text h5{
+    font-size: 90%;
+}
+
+.main-article-img{
+    background-image: url("../DesignMaterials/Images/izzy-s-pizza.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+
+.main-nav-button{
+    border-radius: 30px;
+    font-family: sans-serif;
+}
+
+#main-shop-button{
+    background-color: rgba(0, 148, 212,1);
+    transition: background-color 0.2s ease-in-out 0s;
+}
+
+#main-shop-button:hover{
+    background-color: rgba(0, 148, 212,0.8);
+}
+
+#main-shop-button a{
+    text-decoration: none;
+    color:white;
+}
+
+#main-shop-button a #out{
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-shop-button a #out #in{
+    font-size: 200%;
+}
+
+
+
+#main-restaurant-button{
+    background-color: rgba(120, 237, 74,1);
+    transition: background-color 0.2s ease-in-out 0s;
+}
+
+#main-restaurant-button:hover{
+    background-color: rgba(120, 237, 74,0.8);
+}
+
+#main-restaurant-button a{
+    text-decoration: none;
+    color:white;
+}
+
+#main-restaurant-button a #out{
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-restaurant-button a #out #in{
+    font-size: 200%;
+}
+
+
+#main-cinema-button{
+    background-color: rgba(209, 139, 42,1);
+    transition: background-color 0.2s ease-in-out 0s;
+}
+
+#main-cinema-button:hover{
+    background-color: rgba(209, 139, 42,0.8);
+}
+
+#main-cinema-button a{
+    text-decoration: none;
+    color:white;
+}
+
+#main-cinema-button a #out{
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-cinema-button a #out #in{
+    font-size: 200%;
+}
+
+.sub-article{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    border-radius: 50px;
+}
+
+.articles-and-nav{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 40%;
+    grid-template-rows: 23% 23% 23% 30%;
+    height: 100vh;
+}
+
+.articles-and-nav > *{
+    margin: 15px;
+}
+
+#sub-article-img1{
+    background-image: url("../DesignMaterials/Images/https___blogs-images.forbes.com_trevornace_files_2015_11_beautiful-places-world-1200x900.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border: 1px solid #334756;
+}
+
+#sub-article-img2{
+    background-image: url("../DesignMaterials/Images/Asian-Street-Kitchen-Festival-2019-min.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border: 1px solid #334756;
+}
+
+#sub-article-img3{
+    background-image: url("../DesignMaterials/Images/GettyImages_1175278483.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border: 1px solid #334756;
+}
+
+.sub-article-label{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    background-color: white;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    border: 1px solid #334756;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-assoc-login{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.admin-assoc-login-button button{
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    background-color: rgba(8, 32, 50,1);
+    cursor: pointer;
+}
+
+.admin-assoc-login-button button:hover{
+    background-color: rgba(8, 32, 50,0.9);
+}
+
+
+
+

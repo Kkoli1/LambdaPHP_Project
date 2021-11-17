@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.article-page{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    margin-top: 25px;
+}
+
+.left{
+    text-align: end;
+}
+
+.left a{
+    text-decoration: none;
+    color: grey;
+    margin-right: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.left a:hover{
+    text-decoration: underline;
+}
+
+.center *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.center h2{
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.center h5{
+    color: #424242;
+    font-size: 15px;
+}
+
+.center p{
+    color: black;
+    font-size: 18px;
+}
+
+.article-img{
+    height: 450px;
+    background-image: url("../DesignMaterials/Images/izzy-s-pizza.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.article-date-posted{
+    float: left;
+}
+
+.article-time-read{
+    float: right;
+}
+
+
+
