@@ -56,6 +56,45 @@
                 </div>
                 <input type="submit" value="+">
             </form>
+            <!-- Displaying Business -->
+            <div class="display-container-2">
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Shop & Logo</h3>
+                    </div>
+                    <div class="display-value">
+                        Shop 1
+                        Sample Image
+                    </div>
+                </div>  
+
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Account Name</h3>
+                    </div>
+                    <div class="display-value">
+                        Account 1
+                    </div>
+                </div>
+                
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Password</h3>
+                    </div>
+                    <div class="display-value" id="password-wrap">
+                        <?php echo sha1("sample-password") ?>
+                    </div>
+                </div> 
+
+                <div class="display-infos" id="info-scroll">
+                    <div class="display-label">
+                        <h3>Information</h3>
+                    </div>
+                    <div class="display-value">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
+                    </div>
+                </div> 
+            </div>
         </div>
         <div class="right"></div>
     </section>

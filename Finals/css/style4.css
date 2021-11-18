@@ -425,3 +425,49 @@ input[type=date]{
     height: 40px;
     text-align: center;
 }
+
+
+.display-container{
+    margin-top: 10px;
+    flex-basis: 821.95px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-container-2{
+    margin-top: 10px;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.display-infos{
+    width: 18%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(8, 32, 50);
+}
+
+
+.display-label{
+    margin-bottom: 10px;
+}
+
+.display-value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    border: 1px solid rgba(51, 71, 86,0.6); 
+}
+
+
+#password-wrap{
+    overflow-wrap: anywhere;
+}
+
+#info-scroll .display-value{
+    overflow-y: scroll;
+    align-items: flex-start;
+}

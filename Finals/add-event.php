@@ -57,6 +57,44 @@
                     </div>
                 </div>
             </form>
+            <!-- Displaying Event -->
+            <div class="display-container">
+                <div class="display-infos" id="event-infos">
+                    <div class="display-label">
+                        <h3>Event Name</h3>
+                    </div>
+                    <div class="display-value">
+                        Spiderman: Work From Home
+                    </div>
+                </div>  
+
+                <div class="display-infos" id="event-infos">
+                    <div class="display-label">
+                        <h3>Start Date</h3>
+                    </div>
+                    <div class="display-value">
+                        2021-11-09
+                    </div>
+                </div>
+                
+                <div class="display-infos" id="event-infos">
+                    <div class="display-label">
+                        <h3>End Date</h3>
+                    </div>
+                    <div class="display-value">
+                        2021-11-18
+                    </div>
+                </div> 
+
+                <div class="display-infos" id="info-scroll">
+                    <div class="display-label">
+                        <h3>Information</h3>
+                    </div>
+                    <div class="display-value">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
+                    </div>
+                </div> 
+            </div>
         </div>
         <div class="right"></div>
     </section>
