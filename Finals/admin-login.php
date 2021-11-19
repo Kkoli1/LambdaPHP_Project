@@ -1,3 +1,10 @@
+
+<?php
+include('dbconnect.php');
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,18 +40,41 @@
                     <img src="DesignMaterials/Icons/outline_admin_panel_settings_black_48dp.png" alt="">
                     <h1>Admin</h1>
                 </div>
-                <form action="admin-menu.php" method="post" class="form">  
+                <form action="" method="POST" class="form">  
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Username" style="border-radius: 20px;">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Username" style="border-radius: 20px;" name="admin_username">
                         <label for="floatingInput">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="border-radius: 20px;">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="border-radius: 20px;" name="admin_password">
                         <label for="floatingPassword">Password</label>
                     </div>
-                    <input type="submit" value="LOGIN" class="btn btn-primary" style="margin-top: 15px;" id="submit-button">
+                    <input type="submit" name = "admin_login" value="LOGIN" class="btn btn-primary" style="margin-top: 15px;" id="submit-button">
                 </form> 
-            </div>  
+            </div> 
+            <?php 
+
+            if (isset($_POST['admin_login'])){
+
+                $username = $_POST['admin_username'];
+                $password = sha1($_POST['admin_password']);
+
+                $query = "SELECT * from business WHERE username ='$username' AND password = '$password'";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) != 0){
+                    $qValues = mysqli_fetch_array($result);
+                    if ($qValues['category'] == "ADMIN"){
+                        header("Location: admin-menu.php");
+                    } else {
+                        echo "<h4 style = 'color:red;'>User Must be an Admin</h4>";
+                    }
+
+                }else {
+                    echo "<h4 style = 'color:red;'>Invalid Credentials </h4>"; 
+                }
+            }
+
+            ?> 
         </div>
         <div class="back-button">
             <a href="admin-assoc-login.php">< Back</a>
@@ -52,3 +82,5 @@
     </section>
 </body>
 </html>
+
+

@@ -56,7 +56,7 @@ CREATE TABLE `articles` (
 
 CREATE TABLE `business` (
   `business_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `username` varchar(15) NOT NULL,
+  `username` varchar(15) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `customer` (
   `first_name` varchar(250) NOT NULL,
   `middle_name` varchar(250) DEFAULT NULL,
   `last_name` varchar(250) NOT NULL,
-  `username` varchar(15) NOT NULL,
+  `username` varchar(15) NOT NULL UNIQUE,
   `user_password` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -289,6 +289,20 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `seller`
   ADD CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
+
+
+ALTER TABLE `orders` AUTO_INCREMENT = 1000000;
+ALTER TABLE `business` AUTO_INCREMENT = 1000000;
+ALTER TABLE `customer_orders` AUTO_INCREMENT = 1000000;
+ALTER TABLE `inventory` AUTO_INCREMENT = 1000000;
+ALTER TABLE `events` AUTO_INCREMENT = 1000000;
+ALTER TABLE `delivery` AUTO_INCREMENT = 1000000;
+ALTER TABLE `seller` AUTO_INCREMENT = 1000000;
+
+
+INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Admin)", "ABC Mall Account Administrator", "ADMIN", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "Admin");
+INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Business)", "ABC Mall Account Administrator", "GENERAL", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "ABCMall");
+
 
 
 COMMIT;
