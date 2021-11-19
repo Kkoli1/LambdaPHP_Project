@@ -241,7 +241,7 @@
 
 .add-account-name{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -261,6 +261,18 @@
     border-radius: 4px;
     border: 1px solid rgb(51, 71, 86);
     padding-left: 10px;
+}
+
+
+#category{
+    height: 100%;
+    text-align: center;
+    font-size: larger;
+}
+
+#category,
+#business-account-name{
+    width: 48%;
 }
 
 input[type=text], input[type=password], #additional-info{
@@ -458,7 +470,7 @@ input[type=date]{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 200px;
     border: 1px solid rgba(51, 71, 86,0.6); 
 }
 
@@ -512,3 +524,23 @@ input[type=date]{
     width: 30px;
 }
 
+#display-img-business{
+    overflow-x: hidden;
+}
+
+#display-img-business img{
+    height: 190px;
+}
+
+.delete-form-container{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-form-container :nth-child(2){
+    margin-top: unset;
+    width: 120px;
+}

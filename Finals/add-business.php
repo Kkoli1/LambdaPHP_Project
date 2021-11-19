@@ -59,7 +59,14 @@
                         <input type="text" placeholder="Enter Shop Name" name="shopname" class="new-business-input">
                     </div>
                     <div class="add-account-name">
-                        <input type="text" placeholder="Enter Account Name" name="accountname" class="new-business-input">
+                        <input type="text" placeholder="Enter Account Name" name="accountname" class="new-business-input" id="business-account-name">
+                        <select name="category" id="category">
+                            <option value="DEFAULT">SELECT A CATEGORY:</option>
+                            <option value="RESTAURANT">RESTAURANT</option>
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="SERVICES">SERVICES</option>
+                            <option value="GENEREAL">GENERAL</option>
+                        </select>
                     </div>
                     <div class="add-password">
                         <input type="password" placeholder="Enter Password" name="password" class="new-business-input">
@@ -109,9 +116,10 @@
                                 <div class="display-label">
                                     <h3>Shop & Logo</h3>
                                 </div>
-                                <!-- <div class="display-value" style = "padding: 0px"> -->
-                                    <?php echo "<img style = 'height: 120px' src= 'BusinessLogos/".$qValue['photo']."' alt = 'BusinessLogos/Logo_Place.png'";?>
-                                <!-- front end bois patulong dito di ko alam kung pano ko ma format papunta sa tabi ng account name HAHAHAHHA </div>-->
+                                <div class="display-value" id="display-img-business">
+                                    <img src=<?php echo "BusinessLogos/$qValue[photo]" ?> alt="BusinessLogos/Logo_Place.png">
+                                </div>    
+                                
                             </div>  
 
                             <div class="display-infos" id="business-infos">
@@ -146,6 +154,12 @@
                        }
                 }
                 ?>
+                <form action="" method="post">
+                    <div class="delete-form-container">
+                        <input type="text" name="delete-business" id="delete-business" placeholder="Enter Account Name">
+                        <input type="submit" name="Delete" value="Delete" id="Delete">
+                    </div>               
+                </form>
         </div>
         <div class="right"></div>
     </section>
