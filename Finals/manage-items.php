@@ -52,6 +52,54 @@
                     </div>
                 </div>
             </form>
+            <!-- Displaying Items -->
+            <div class="display-container">
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Item Name</h3>
+                    </div>
+                    <div class="display-value">
+                        Sample Item 1
+                    </div>
+                </div>  
+
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Avl</h3>
+                    </div>
+                    <div class="display-value">
+                        Yes
+                    </div>
+                </div>
+                
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Group</h3>
+                    </div>
+                    <div class="display-value" id="password-wrap">
+                        Sample 
+                        Group 1
+                    </div>
+                </div> 
+
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Price</h3>
+                    </div>
+                    <div class="display-value" id="password-wrap">
+                        99.50
+                    </div>
+                </div> 
+
+                <div class="display-infos" id="info-scroll">
+                    <div class="display-label">
+                        <h3>Information</h3>
+                    </div>
+                    <div class="display-value">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
+                    </div>
+                </div> 
+            </div>
         </div>
         <div class="right"></div>
     </section>

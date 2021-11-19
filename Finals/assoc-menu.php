@@ -33,10 +33,7 @@
             </div>
             <div class="admin-menu-button-container">
                 <a href="#"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store</h3></div></a>
-            </div>
-            <div class="admin-menu-button-container">
-                <a href="#"><div class="admin-menu-button" id="manage-reservation"><h3>Manage Reservations</h3></div></a>
-            </div>   
+            </div> 
             <div class="log-out-container">
                 <a href="#"><div class="admin-logout"><h2>Log Out</h2></div></a>
             </div>
