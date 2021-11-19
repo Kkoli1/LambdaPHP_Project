@@ -55,7 +55,7 @@ CREATE TABLE `articles` (
 --
 
 CREATE TABLE `business` (
-  `business_id` int(11) NOT NULL,
+  `business_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(15) NOT NULL,
   `password` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `customer` (
-  `Customer_ID` int(11) NOT NULL,
+  `Customer_ID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `first_name` varchar(250) NOT NULL,
   `middle_name` varchar(250) DEFAULT NULL,
   `last_name` varchar(250) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `customer` (
 --
 
 CREATE TABLE `customer_orders` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -122,7 +122,7 @@ CREATE TABLE `customer_orders` (
 --
 
 CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL,
+  `delivery_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `date_of_delivery` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -133,7 +133,7 @@ CREATE TABLE `delivery` (
 --
 
 CREATE TABLE `events` (
-  `event_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `event_title` varchar(255) NOT NULL,
   `event_description` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE `events` (
 --
 
 CREATE TABLE `inventory` (
-  `product_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `seller_id` int(11) NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_description` varchar(255) DEFAULT NULL,
@@ -181,7 +181,7 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `seller` (
-  `seller_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `business_name` varchar(255) NOT NULL,
   `business_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -196,17 +196,6 @@ CREATE TABLE `seller` (
 ALTER TABLE `address`
   ADD KEY `customer_id` (`customer_id`);
 
---
--- Indexes for table `articles`
---
-ALTER TABLE `articles`
-  ADD PRIMARY KEY (`article_id`);
-
---
--- Indexes for table `business`
---
-ALTER TABLE `business`
-  ADD PRIMARY KEY (`business_id`);
 
 --
 -- Indexes for table `card_information`
@@ -221,36 +210,19 @@ ALTER TABLE `cart`
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `product_id` (`product_id`);
 
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`Customer_ID`);
 
 --
 -- Indexes for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  ADD PRIMARY KEY (`order_id`),
   ADD KEY `customer_id` (`customer_id`);
 
---
--- Indexes for table `delivery`
---
-ALTER TABLE `delivery`
-  ADD PRIMARY KEY (`delivery_id`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`event_id`);
 
 --
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `product_id` (`product_id`),
   ADD KEY `seller_id` (`seller_id`);
 
 --
@@ -266,7 +238,6 @@ ALTER TABLE `orders`
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD PRIMARY KEY (`seller_id`),
   ADD KEY `business_id` (`business_id`);
 
 --
@@ -318,6 +289,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `seller`
   ADD CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
