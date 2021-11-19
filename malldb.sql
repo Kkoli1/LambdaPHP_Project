@@ -57,6 +57,7 @@ CREATE TABLE `articles` (
 CREATE TABLE `business` (
   `business_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(15) NOT NULL UNIQUE,
+  `photo` varchar(255) NOT NULL DEFAULT 'Logo_Place.png',
   `password` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
@@ -301,7 +302,7 @@ ALTER TABLE `seller` AUTO_INCREMENT = 1000000;
 
 
 INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Admin)", "ABC Mall Account Administrator", "ADMIN", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "Admin");
-INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Business)", "ABC Mall Account Administrator", "GENERAL", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "ABCMall");
+INSERT INTO business (business_name,business_description,category,password,username,photo) VALUES ("ABC Mall (Business)", "ABC Mall Account Administrator", "GENERAL", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "ABCMall", "ABCMall.png");
 
 
 

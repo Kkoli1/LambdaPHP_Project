@@ -1,3 +1,17 @@
+<?php
+
+    include("dbconnect.php");
+
+    $query = "SELECT * from business";
+    $result = mysqli_query($conn, $query);
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,14 +45,14 @@
     <section class="grid-page-2">
         <div class="left"><a href="admin-menu.php"><b>←</b> </a></div>
         <div class="center">
-            <form action="" class="add-business-form">
+            <form action="" class="add-business-form" enctype="multipart/form-data" method = "POST">
                 <div class="add-business-form-container">
                     <div class="add-business-img-container" style="grid-column: 1/span 1; grid-row: 1/span 3;">
                         <div class="label-container">
                             <label for="logo-upload">Shop Logo</label>
                         </div>
                         <div class="file-choose-container">
-                            <input type="file" name="logo-upload" id="logo-upload">
+                            <input type="file" name="logo">
                         </div>
                     </div>
                     <div class="add-shop-name">
@@ -51,50 +65,87 @@
                         <input type="password" placeholder="Enter Password" name="password" class="new-business-input">
                     </div>
                     <div class="add-additional-info" style="grid-column: 2/span 1; grid-row: 4/span 1;">
-                        <textarea name="additional-info" id="additional-info" cols="30" rows="10" placeholder="Write Something"></textarea>
+                        <textarea name="additional" id="additional-info" cols="30" rows="10" placeholder="Write Something"></textarea>
                     </div>
                 </div>
-                <input type="submit" value="+">
+                <input type="submit" value="+" name = "submit">
+
+                <?php 
+                
+                if (isset($_POST['submit'])){
+                    $dir = "BusinessLogos";
+                    $upload = move_uploaded_file($_FILES['logo']['tmp_name'], $dir. "/". $_FILES['logo']['name']);
+                    $username = $_POST['accountname'];
+                    $filename = $_FILES['logo']['name'];
+                    $password = sha1($_POST['password']);
+                    $name = $_POST['shopname'];
+                    $additional = $_POST['additional'];
+                    $insert = "INSERT INTO business (username,photo,password,category,business_name,business_description) VALUES ('$username','$filename','$password','STORE','$name','$additional')";
+                    
+                    if (!mysqli_query($conn, $insert)){
+                        echo("Error description: " . mysqli_error($conn));
+                        echo "<h3 style = 'color:red; text-align:center'>Wrong Input Values, review values</h3>";
+                    } else {
+                        header("Location: add-business.php");
+                    }
+               
+                }
+                
+                ?>
+
             </form>
             <!-- Displaying Business -->
-            <div class="display-container-2">
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Shop & Logo</h3>
-                    </div>
-                    <div class="display-value">
-                        Shop 1
-                        Sample Image
-                    </div>
-                </div>  
+            <?php 
+                if (mysqli_num_rows($result) == 0){
+                    echo "<h3 style = 'color:red'> DB is EMPTY </h3>";
+                } else {
 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Account Name</h3>
-                    </div>
-                    <div class="display-value">
-                        Account 1
-                    </div>
-                </div>
+                    while ($qValue = mysqli_fetch_assoc($result)){
+
                 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Password</h3>
-                    </div>
-                    <div class="display-value" id="password-wrap">
-                        <?php echo sha1("sample-password") ?>
-                    </div>
-                </div> 
+                ?>
+                    <div class="display-container-2">
+                            <div class="display-infos" id="business-infos">
+                                <div class="display-label">
+                                    <h3>Shop & Logo</h3>
+                                </div>
+                                <!-- <div class="display-value" style = "padding: 0px"> -->
+                                    <?php echo "<img style = 'height: 120px' src= 'BusinessLogos/".$qValue['photo']."' alt = 'BusinessLogos/Logo_Place.png'";?>
+                                <!-- front end bois patulong dito di ko alam kung pano ko ma format papunta sa tabi ng account name HAHAHAHHA </div>-->
+                            </div>  
 
-                <div class="display-infos" id="info-scroll">
-                    <div class="display-label">
-                        <h3>Information</h3>
+                            <div class="display-infos" id="business-infos">
+                                <div class="display-label">
+                                    <h3>Account Name</h3>
+                                </div>
+                                <div class="display-value">
+                                    <?php echo $qValue['business_name'];?>
+                                </div>
+                            </div>
+                            
+                            <div class="display-infos" id="business-infos">
+                                <div class="display-label">
+                                    <h3>Password</h3>
+                                </div>
+                                <div class="display-value" id="password-wrap">
+                                    <?php echo $qValue['password'];?>
+                                </div>
+                            </div> 
+
+                            <div class="display-infos" id="info-scroll">
+                                <div class="display-label">
+                                    <h3>Information</h3>
+                                </div>
+                                <div class="display-value">
+                                    <?php echo $qValue['business_description'];?>
+                                </div>
+                            </div> 
+                
                     </div>
-                    <div class="display-value">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
-                    </div>
-                </div> 
-            </div>
+                    <?php 
+                       }
+                }
+                ?>
         </div>
         <div class="right"></div>
     </section>
