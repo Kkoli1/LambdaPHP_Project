@@ -106,6 +106,13 @@
                     </div>
                 </div>
             </div>
+            <div class="button-form-container">
+                <a href="explore-tile.php">
+                    <div class="button-form-button">
+                        <h3>TILE FORM</h3>
+                    </div>
+                </a>
+            </div>
         </div>
         <div class="right"></div>
     </section>
