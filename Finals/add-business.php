@@ -85,9 +85,10 @@
                     $username = $_POST['accountname'];
                     $filename = $_FILES['logo']['name'];
                     $password = sha1($_POST['password']);
+                    $category = $_POST['category'];
                     $name = $_POST['shopname'];
                     $additional = $_POST['additional'];
-                    $insert = "INSERT INTO business (username,photo,password,category,business_name,business_description) VALUES ('$username','$filename','$password','STORE','$name','$additional')";
+                    $insert = "INSERT INTO business (username,photo,password,category,business_name,business_description) VALUES ('$username','$filename','$password','$category','$name','$additional')";
                     
                     if (!mysqli_query($conn, $insert)){
                         echo("Error description: " . mysqli_error($conn));

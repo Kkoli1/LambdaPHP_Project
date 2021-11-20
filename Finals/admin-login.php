@@ -59,7 +59,7 @@ include('dbconnect.php');
                 $username = $_POST['admin_username'];
                 $password = sha1($_POST['admin_password']);
 
-                $query = "SELECT * from business WHERE username ='$username' AND password = '$password'";
+                $query = sprintf("SELECT * from business WHERE username ='%s' AND password = '%s'", mysqli_real_escape_string($conn, $username), mysqli_real_escape_string($conn, $password));
                 $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) != 0){
                     $qValues = mysqli_fetch_array($result);
