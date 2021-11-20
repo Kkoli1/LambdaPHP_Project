@@ -497,6 +497,9 @@ input[type=date]{
     gap: 10px;
 }
 
+.back-text:hover{
+    font-size: 22px;
+}
 
 .back-link{
     text-decoration: none;
@@ -543,4 +546,72 @@ input[type=date]{
 .delete-form-container :nth-child(2){
     margin-top: unset;
     width: 120px;
+}
+
+
+.explore-list-header{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 100px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 27px;
+    color: rgb(8, 32, 50);
+    padding-left: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgb(8, 32, 50);
+}
+
+.explore-list-header h1 span{
+    font-weight: 300;
+}
+
+.explore-list-container{
+    color: rgb(8, 32, 50);
+    margin-top: 50px;
+    font-family: 'Open Sans', sans-serif;
+    transform: scale(1.2);
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 33% 33% 33%;
+}
+
+
+
+.explore-list-head{
+    /* outline: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.explore-list-head svg{
+    margin-right: 10px;
+    transform: scale(1.3);
+}
+
+.explore-list-head h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.explore-list-body{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.explore-list-body > * {
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: rgb(8, 32, 50);
+}
+
+.explore-list-body > * > *{
+    font-weight: 300;
 }
