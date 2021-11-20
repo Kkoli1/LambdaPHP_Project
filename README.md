@@ -1,18 +1,3 @@
 # LambdaPHP_Project
-Ecommerce project by Lambda PHP
-codio lover
-edi sa keyboard
+Ecommerce website project by Lambda PHP 
 
-change from local
-
-will try to replicate 
-
-patay tayo jan
-
-AKIOPOGS ALL THE WAY !!!!
-
-AKIO 2021 UP TO INFIINITE
-
-AKIO TRY LANGZ
-
-TRY LANGSSS . SAYA MAG GIT EH 
