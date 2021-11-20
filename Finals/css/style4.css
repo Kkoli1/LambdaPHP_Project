@@ -548,7 +548,7 @@ input[type=date]{
     width: 120px;
 }
 
-
+.explore-list-header-2,
 .explore-list-header{
     width: 100%;
     display: flex;
@@ -563,8 +563,13 @@ input[type=date]{
     border-bottom: 2px solid rgb(8, 32, 50);
 }
 
+.explore-list-header-2 h1 span,
 .explore-list-header h1 span{
     font-weight: 300;
+}
+
+.explore-list-header-2{
+    border-bottom: unset;
 }
 
 .explore-list-container{
@@ -614,4 +619,93 @@ input[type=date]{
 
 .explore-list-body > * > *{
     font-weight: 300;
+}
+
+.button-form-container{
+    margin: 120px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-form-container a{
+    text-decoration: none;
+}
+
+.button-form-button{
+    width: 200px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 30px;
+    background-color: rgba(51, 71, 86,1);
+    color: white;
+}
+
+.button-form-button h3{
+    font-weight: 300;
+}
+
+.tile-grid-container{
+    margin-top: 30px;
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-rows: 170px 170px;
+    gap: 20px;
+}
+
+.tile-grid-container > * {
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.tile{
+    outline: 1px solid rgba(51, 71, 86,1);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    transition: background-color 0.2s ease-in-out 0s;
+}
+
+.tile svg{
+    transform: scale(2);
+    transition: fill 0.2s ease-in-out 0s;
+}
+
+.tile h3{
+    font-weight: 300;
+    margin-top: 10px;
+    color: rgba(8, 32, 50, 1);
+    transition: color 0.2s ease-in-out 0s;
+}
+
+.tile:hover {
+    background-color: rgba(8, 32, 50, 1);
+}
+
+.tile:hover svg{
+    fill: white;
+}
+
+.tile:hover h3{
+    color: white;
+}
+
+#cinema-tile{
+    grid-column: 1 / span 2;
+}
+
+#others-tile{
+    grid-column: 3 / span 2;
+}
+
+.tile{
+    
 }
