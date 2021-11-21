@@ -65,4 +65,56 @@ header{
     color: rgba(240, 165, 0,1);
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#search-nav{
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 45vw;
+}
+
+
+#search-nav::placeholder{
+    color: white;
+}
+
+#search-nav-submit{
+    margin-top: unset;
+    border-radius: unset;
+    border: none;
+    cursor: pointer;
+    height: 42px;
+    width: 44px;
+    color: white;
+    background-color: transparent;
+    font-size: 20px;
+
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.profile-container {
+    transform: scale(1.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+
 

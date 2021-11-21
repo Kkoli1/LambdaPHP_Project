@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="css/navigation-general.css">
     <link rel="stylesheet" href="css/style4.css">
-    <title>Update Cinema</title>
+    <title>Manage Online Store</title>
 </head>
 <body>
     <header class="main-screen-header">
