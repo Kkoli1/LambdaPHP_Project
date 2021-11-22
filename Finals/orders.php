@@ -43,25 +43,14 @@
         <div class="left"></div>
         <div class="center">
             <div class="button-container-cart">
-                <a href="orders.php">
+                <a href="cart.php">
                     <div class="cart-button" id="orders-cart-button">
-                        <h4>ORDERS</h4>
+                        <h4>GO TO CART</h4>
                     </div>
                 </a>
-            
-                <div class="checkout-form-container">
-                    <form action="checkout.php" method="post" id=checkout-form>
-                        <input type="submit" value="CHECKOUT" id="checkout-cart-button">
-                    </form>
-                </div>
-                
-                
             </div>
 
             <div class="cart-item">
-                <div class="checkbox-container">
-                    <input type="checkbox" name="item-checkbox" id="item-checkbox" form="checkout-form">
-                </div>
                 
                 <div class="item-img">
                     <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
@@ -71,58 +60,56 @@
                     <h3>Item 1</h3>
                 </div>
 
-                <div class="price-quantity">
-                    <h4>Price: <b>7.69</b></h4>
-                    <div class="quantity">
-                        <h4>Quantity: </h4>
-                        <input type="text" form="checkout-form">
-                    </div>                  
+                <div class="check-status">
+                    <a href="">
+                        <div class="cart-button" id="orders-cart-button">
+                            <h4>CHECK STATUS</h4>
+                        </div>
+                    </a>             
                 </div>
             </div>
 
             <div class="cart-item">
-                <div class="checkbox-container">
-                    <input type="checkbox" name="item-checkbox" id="item-checkbox" form="checkout-form">
-                </div>
                 
                 <div class="item-img">
                     <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
                 </div>
 
                 <div class="item-name">
-                    <h3>Item 2</h3>
+                    <h3>Item 1</h3>
                 </div>
 
-                <div class="price-quantity">
-                    <h4>Price: <b>7.69</b></h4>
-                    <div class="quantity">
-                        <h4>Quantity: </h4>
-                        <input type="text" form="checkout-form">
-                    </div>                  
+                <div class="check-status">
+                    <a href="">
+                        <div class="cart-button" id="orders-cart-button">
+                            <h4>CHECK STATUS</h4>
+                        </div>
+                    </a>             
                 </div>
             </div>
 
             <div class="cart-item">
-                <div class="checkbox-container">
-                    <input type="checkbox" name="item-checkbox" id="item-checkbox" form="checkout-form">
-                </div>
                 
                 <div class="item-img">
                     <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
                 </div>
 
                 <div class="item-name">
-                    <h3>Item 2</h3>
+                    <h3>Item 1</h3>
                 </div>
 
-                <div class="price-quantity">
-                    <h4>Price: <b>7.69</b></h4>
-                    <div class="quantity">
-                        <h4>Quantity: </h4>
-                        <input type="text" form="checkout-form">
-                    </div>                  
+                <div class="check-status">
+                    <a href="">
+                        <div class="cart-button" id="orders-cart-button">
+                            <h4>CHECK STATUS</h4>
+                        </div>
+                    </a>             
                 </div>
             </div>
+
+            
+
+            
 
         </div>
         <div class="right"></div>

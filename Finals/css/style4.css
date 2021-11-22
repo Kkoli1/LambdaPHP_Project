@@ -946,3 +946,11 @@ input[type=date]{
     width: 200px;
     font-size: 20px;
 }
+
+.check-status a .cart-button{
+    background-color: rgba(51, 71, 86,1);
+}
+
+.check-status a .cart-button h4{
+    color: white;
+}
