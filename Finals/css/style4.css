@@ -954,3 +954,29 @@ input[type=date]{
 .check-status a .cart-button h4{
     color: white;
 }
+
+.file-uploads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    border: 1px solid rgb(51, 71, 86, 0.6);
+}
+
+.movie-info{
+    display: flex;
+    gap: 20px;
+}
+
+
+.file-uploads input[type=file]{
+    width: 87.14px;
+    overflow-x: hidden;
+}
+
+.separator{
+    width: 100%;
+    content: " ";
+    outline: 1px solid rgb(51, 71, 86, 0.6);
+}

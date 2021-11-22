@@ -54,6 +54,13 @@
                     </div>
                     <div class="movie-info">
                             <textarea name="movie-info" id="additional-info" cols="30" rows="10" placeholder="Enter Additional information"></textarea>
+                            <div class="file-uploads">
+                                <label for="movie-trailer">Movie Trailer</label>
+                                <input type="file" name="movie-trailer" id="movie-trailer">
+                                <div class="separator"></div>
+                                <label for="movie-poster">Movie Poster</label>
+                                <input type="file" name="movie-poster" id="movie-poster">
+                            </div>
                     </div>
                     <div class="movie-submit">
                         <input type="submit" value="+">
