@@ -98,6 +98,8 @@
                     }
                
                 }
+
+                
                 
                 ?>
 
@@ -118,7 +120,7 @@
                                     <h3>Shop & Logo</h3>
                                 </div>
                                 <div class="display-value" id="display-img-business">
-                                    <img src=<?php echo "BusinessLogos/$qValue[photo]" ?> alt="BusinessLogos/Logo_Place.png">
+                                    <img src=<?php echo "BusinessLogos/$qValue[photo]" ?>>
                                 </div>    
                                 
                             </div>  
@@ -155,11 +157,30 @@
                        }
                 }
                 ?>
-                <form action="" method="post">
+                <form action="add-business.php" method="post">
                     <div class="delete-form-container">
-                        <input type="text" name="delete-business" id="delete-business" placeholder="Enter Account Name">
+                        <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
                         <input type="submit" name="Delete" value="Delete" id="Delete">
-                    </div>               
+                    </div> 
+                    
+                    <?php 
+                    
+                        if(isset($_POST['Delete'])){
+                            $del_account_name = $_POST['business'];
+
+                            $query = "DELETE FROM business WHERE business_name = '$del_account_name'";
+
+                            if (!mysqli_query($conn, $query)){
+                                echo("Error description: " . mysqli_error($conn));
+                                echo "<h3 style = 'color:red; text-align:center'>No Existing Account Name</h3>";
+                            } else {
+                                echo "<h3 style = 'color:green; text-align:center'>The Change will apply after the refresh</h3>";
+                            }
+
+                        }
+                    
+                    
+                    ?>
                 </form>
         </div>
         <div class="right"></div>

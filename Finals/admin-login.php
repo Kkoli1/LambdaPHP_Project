@@ -68,7 +68,6 @@ include('dbconnect.php');
                     } else {
                         echo "<h4 style = 'color:red;'>User Must be an Admin</h4>";
                     }
-
                 }else {
                     echo "<h4 style = 'color:red;'>Invalid Credentials </h4>"; 
                 }

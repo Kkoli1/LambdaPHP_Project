@@ -89,6 +89,21 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+
+CREATE TABLE `cinema` (
+  `movie_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `movie_name` varchar(255) NOT NULL,
+  `movie_description` varchar(255) NOT NULL,
+  `start_time` time NOT NULL,
+  `duration_hours` int(2) NOT NULL,
+  `duration_mins` int(2) NOT NULL,
+  `file_picture` varchar(255),
+  `file_trailer` varchar(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- --------------------------------------------------------
 
 --
@@ -139,8 +154,6 @@ CREATE TABLE `events` (
   `event_description` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
-  `start_time` time NOT NULL,
-  `end_time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -299,6 +312,7 @@ ALTER TABLE `inventory` AUTO_INCREMENT = 1000000;
 ALTER TABLE `events` AUTO_INCREMENT = 1000000;
 ALTER TABLE `delivery` AUTO_INCREMENT = 1000000;
 ALTER TABLE `seller` AUTO_INCREMENT = 1000000;
+ALTER TABLE `cinema` AUTO_INCREMENT = 1000000;
 
 
 INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Admin)", "ABC Mall Account Administrator", "ADMIN", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "Admin");
