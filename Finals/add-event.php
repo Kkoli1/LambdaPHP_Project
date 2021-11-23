@@ -1,3 +1,12 @@
+<?php
+
+    include("dbconnect.php");
+
+    $query = "SELECT * from events";
+    $result = mysqli_query($conn, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,70 +40,109 @@
     <section class="grid-page-2">
         <div class="left"><a href="admin-menu.php"><b>←</b></a></div>
         <div class="center">
-            <form action="#">
+            <form method = "POST">
                 <div class="add-event-form-container">
                     
                     <div class="event-row-1">
                         <div class="event-name">
-                            <input type="text" name="event-name" id="event-name" placeholder="Enter Event Name">
+                            <input type="text" name="event_name" id="event-name" placeholder="Enter Event Name">
                         </div>
                         <div class="event-start">
                             <label for="event-start">Start: </label>
-                            <input type="date" name="event-start" id="event-start">
+                            <input type="date" name="event_start" id="event-start">
                         </div>
                         <div class="event-end">
                             <label for="event-end">End: </label>
-                            <input type="date" name="event-end" id="event-end">
+                            <input type="date" name="event_end" id="event-end">
                         </div>
                     </div>
 
                     <div class="event-additional-info">
-                        <textarea name="event-info" id="additional-info" cols="30" rows="10" placeholder="Enter Additional Info"></textarea>
+                        <textarea name="event_info" id="additional-info" cols="30" rows="10" placeholder="Enter Additional Info"></textarea>
                     </div>
 
                     <div class="event-submit">
-                        <input type="submit" value="+">
+                        <input type="submit" value="+" name = "submit">
                     </div>
                 </div>
+
+                <?php 
+                  
+                if (isset($_POST['submit'])){
+                    $event_name= $_POST['event_name'];
+                    $event_start = $_POST['event_start'];
+                    $event_end = $_POST['event_end'];
+                    $event_info = $_POST['event_info'];
+                    $insert = "INSERT INTO events (event_title, event_description, start_date, end_date) VALUES ('$event_name','$event_info','$event_start','$event_end')";
+                    
+                    if (!mysqli_query($conn, $insert)){
+                        echo("Error description: " . mysqli_error($conn));
+                        echo "<h3 style = 'color:red; text-align:center'>Wrong Input Values, review values</h3>";
+                    } else {
+                        header("Location: add-event.php");
+                    }
+               
+                }
+                
+                ?>
+
+
             </form>
             <!-- Displaying Event -->
-            <div class="display-container">
-                <div class="display-infos" id="event-infos">
-                    <div class="display-label">
-                        <h3>Event Name</h3>
-                    </div>
-                    <div class="display-value">
-                        Spiderman: Work From Home
-                    </div>
-                </div>  
 
-                <div class="display-infos" id="event-infos">
-                    <div class="display-label">
-                        <h3>Start Date</h3>
-                    </div>
-                    <div class="display-value">
-                        2021-11-09
-                    </div>
-                </div>
+            <?php 
+                if (mysqli_num_rows($result) == 0){
+                    echo "<h3 style = 'color:blue'> DB is EMPTY </h3>";
+                } else {
+
+                    while ($qValue = mysqli_fetch_assoc($result)){
+
                 
-                <div class="display-infos" id="event-infos">
-                    <div class="display-label">
-                        <h3>End Date</h3>
-                    </div>
-                    <div class="display-value">
-                        2021-11-18
-                    </div>
-                </div> 
+            ?>
 
-                <div class="display-infos" id="info-scroll">
-                    <div class="display-label">
-                        <h3>Information</h3>
+
+                <div class="display-container">
+                    <div class="display-infos" id="event-infos">
+                        <div class="display-label">
+                            <h3>Event Name</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['event_title'];?>
+                        </div>
+                    </div>  
+
+                    <div class="display-infos" id="event-infos">
+                        <div class="display-label">
+                            <h3>Start Date</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['start_date'];?>
+                        </div>
                     </div>
-                    <div class="display-value">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
-                    </div>
-                </div> 
-            </div>
+                    
+                    <div class="display-infos" id="event-infos">
+                        <div class="display-label">
+                            <h3>End Date</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['end_date'];?>
+                        </div>
+                    </div> 
+
+                    <div class="display-infos" id="info-scroll">
+                        <div class="display-label">
+                            <h3>Information</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['event_description'];?>
+                        </div>
+                    </div> 
+                </div>
+
+            <?php 
+                }
+            }
+            ?>
         </div>
         <div class="right"></div>
     </section>

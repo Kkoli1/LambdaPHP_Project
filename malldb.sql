@@ -100,7 +100,8 @@ CREATE TABLE `cinema` (
   `duration_hours` int(2) NOT NULL,
   `duration_mins` int(2) NOT NULL,
   `file_picture` varchar(255),
-  `file_trailer` varchar(255)
+  `file_trailer` varchar(255),
+  `cinema_no` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
