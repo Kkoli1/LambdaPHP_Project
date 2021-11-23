@@ -143,6 +143,14 @@
                 }
             }
             ?>
+
+                <form action="add-business.php" method="post">
+                    <div class="delete-form-container">
+                        <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
+                        <input type="submit" name="Delete" value="Delete" id="Delete">
+                    </div> 
+                    
+                </form>
         </div>
         <div class="right"></div>
     </section>

@@ -32,7 +32,7 @@
                 <a href="manage-items.php"><div class="admin-menu-button" id="manage-business-info"><h3>Manage Business Information</h3></div></a>
             </div>
             <div class="admin-menu-button-container">
-                <a href="#"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store</h3></div></a>
+                <a href="manage-online-store.php"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store</h3></div></a>
             </div> 
             <div class="log-out-container">
                 <a href="#"><div class="admin-logout"><h2>Log Out</h2></div></a>
