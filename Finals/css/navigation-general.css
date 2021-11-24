@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    /* 300, 400, 600, 800 */
+    font-family: 'Open Sans', sans-serif;
+}
+
 header{
     background-color: #082032;
     border: solid;
@@ -11,6 +16,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
 }
 
 .logo-link{
@@ -26,17 +32,16 @@ header{
 }
 
 .logo-container img{
-    width: 80px;
+    
+    width: 60px;
 }
 
 .abc-mall{
-    font-family: 'Open Sans', sans-serif;
     font-size: 30px;
     color: white;
     height: fit-content;
-    padding-top: 19px;
-    padding-left: 5px;
-    letter-spacing: 5px;
+    padding-top: 12px;
+    font-weight: 800;
 }
 
 .mall-slogan{
@@ -45,8 +50,8 @@ header{
     height: fit-content;
     color: white;
     position: relative;
-    padding-left: 5px;
-    top: -12px;
+    top: -3px;
+    font-weight: 300;
 }
 
 .profile-link img{
@@ -69,7 +74,6 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #search-nav{
@@ -80,11 +84,18 @@ header{
     border-bottom: 1px solid white;
     color: white;
     text-align: center;
+    height: 42px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
     width: 45vw;
 }
 
+#search-nav:focus {
+    outline: none;
+}
 
 #search-nav::placeholder{
     color: white;
@@ -100,11 +111,9 @@ header{
     color: white;
     background-color: transparent;
     font-size: 20px;
-
     border-top: 1px solid white;
     border-right: 1px solid white;
     border-bottom: 1px solid white;
-
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -117,4 +126,7 @@ header{
     margin-right: 30px;
 }
 
+.shop-cart {
+    padding: 6px 7px 0px 0px;
+}
 
