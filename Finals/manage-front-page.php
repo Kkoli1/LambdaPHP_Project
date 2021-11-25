@@ -1,3 +1,18 @@
+<?php
+
+
+include("dbconnect.php");
+
+
+
+$query = "SELECT * from articles";
+$result = mysqli_query($conn, $query);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,68 +49,80 @@
             <div class="manage-front-page-container">
                 <h3>Select Articles</h3>
                 <br>
-                <form action="">
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-1" id="Article-1" value="Article 1">
-                            <label for="Article-1">Article 1</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-2" id="Article-2" value="Article 2">
-                            <label for="Article-2">Article 2</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-3" id="Article-3" value="Article 3">
-                            <label for="Article-3">Article 3</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-4" id="Article-4" value="Article 4">
-                            <label for="Article-4">Article 4</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-5" id="Article-5" value="Article 5">
-                            <label for="Article-5">Article 5</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-article-container">
-                        <div class="form-article">
-                            <input type="checkbox" name="Article-6" id="Article-6" value="Article 6">
-                            <label for="Article-6">Article 6</label>
-                        </div>
-                        <div class="delete-button">
-                            <input type="button" value="Delete">
-                        </div>
-                    </div>
+                <form action="" method="POST">
 
-                    <input type="submit" value="Submit" class="form-article-submit">
+
+                <?php 
+                
+                if (mysqli_num_rows($result) == 0){
+                    echo "<h3 style = 'color:blue'> DB is EMPTY </h3>";
+                } else {
+
+                    while ($qValue = mysqli_fetch_assoc($result)){
+                
+                ?>
+                    <div class="form-article-container">
+                        <div class="form-article">
+                            <input type="checkbox" name="Article[]" id="Article-1" value=<?php echo $qValue['article_id'];?>>
+                            <label for="Article-1"><?php echo $qValue['title'];?></label>
+                        </div>
+                    </div>
+                    <br>
+                <?php
+                        }
+                    }
+                ?>
+
+                    <input type="submit" name = "submit" value="Submit" class="form-article-submit">
+                    <input type="submit" name = "delete" value="Delete" class="form-article-submit">
+
+                <?php
+
+                        if (isset($_POST['submit'])){
+
+                            $aArticles = $_POST['Article'];
+
+                            if (empty($aArticles)){
+                                echo "<h3 style = 'color:red; text-align:center'>Article count is 0, please choose one</h3>";
+                            }
+                            elseif (count($aArticles) > 4){
+                                echo "<h3 style = 'color:red; text-align:center'>Choose only 4 articles</h3>";
+                            } else {
+                                
+                                $truncate = "TRUNCATE TABLE article_home;";
+                                $query = mysqli_query($conn, $truncate);
+
+                                for ($i=0; $i < count($aArticles); $i++){
+                                    $article_id = $aArticles[$i];
+                                    $insert = "INSERT INTO article_home values ($article_id);";
+                                    $query = mysqli_query($conn, $insert);
+                                }
+                                echo "<h3>Articles Submitted!</h3>";
+                            }
+                        }
+                        elseif (isset($_POST['delete'])){
+
+                            $aArticles = $_POST['Article'];
+
+                            if (empty($aArticles)){
+                                echo "<h3 style = 'color:red; text-align:center'>Article count is 0, please choose one</h3>";
+                            } else {
+                        
+                                for ($i=0; $i < count($aArticles); $i++){
+                                    $article_id = $aArticles[$i];
+                                    $query = "DELETE FROM article_home WHERE article_id = $article_id";
+                                    mysqli_query($conn, $query);
+                                    $query = "DELETE FROM articles WHERE article_id = $article_id";
+                                    mysqli_query($conn, $query);
+                                }
+                                echo "<h3>Articles Deleted!</h3>";
+                            }
+
+
+                        }
+
+                ?>
+
                 </form>
             </div>
         </div>

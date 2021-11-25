@@ -38,13 +38,13 @@
                 <a href="update-cinema.php"><div class="admin-menu-button" id="manage-cinema"><h3>Update/Manage Cinema</h3></div></a>
             </div>
             <div class="admin-menu-button-container">
-                <a href="manage-front-page.php"><div class="admin-menu-button" id="update-front-page"><h3>Update Front Page</h3></div></a>
+                <a href="manage-front-page.php"><div class="admin-menu-button" id="update-front-page"><h3>Manage Articles</h3></div></a>
             </div>
             <div class="admin-menu-button-container">
-                <a href="create-article.php"><div class="admin-menu-button" id="update-articles"><h3>Add/Update Articles</h3></div></a>
+                <a href="create-article.php"><div class="admin-menu-button" id="update-articles"><h3>Add Articles</h3></div></a>
             </div>      
             <div class="log-out-container">
-                <a href="#"><div class="admin-logout"><h2>Log Out</h2></div></a>
+                <a href="admin-assoc-login.php"><div class="admin-logout"><h2>Log Out</h2></div></a>
             </div>
             
         </div>

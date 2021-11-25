@@ -1,3 +1,12 @@
+<?php
+    include("dbconnect.php");
+          
+    
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,26 +40,48 @@
     <section class="grid-page-2">
         <div class="left"><a href="admin-menu.php"><b>←</b></a></div>
         <div class="center">
-            <form action="">
+            <form method = "POST" enctype="multipart/form-data"> 
                 <div class="create-article-form-container">
                     <div class="article-picture-container">
                         <div class="article-picture-label">
                             <label for="article-picture">Choose Article Picture</label>
                         </div>
                         <div class="article-file-choose">
-                            <input type="file" name="article-picture">
+                            <input type="file" name="article_picture">
                         </div>
                     </div>
                     <div class="article-title-container">
-                        <input type="text" name="article-title" id="article-title" placeholder="Enter Article Title">
+                        <input type="text" name="article_title" id="article-title" placeholder="Enter Article Title">
                     </div>
                     <div class="article-content-container">
-                        <textarea name="article-content" id="article-content" cols="30" rows="6" placeholder="Write here..."></textarea>
+                        <textarea name="article_content" id="article-content" cols="30" rows="6" placeholder="Write here..."></textarea>
                     </div>
                 </div>
                 <div class="submit-article-container">
-                    <input type="submit" value="Submit" id="article-submit">
+                    <input type="submit" value="Submit" id="article-submit" name="submit">
                 </div>
+
+            <?php
+                if (isset($_POST['submit'])){
+                    $title = $_POST['article_title'];
+                    $dir = 'Articles/Photos';
+                    $upload = move_uploaded_file($_FILES['article_picture']['tmp_name'], $dir. "/". $_FILES['article_picture']['name']);
+                    $filename_photo = $_FILES['article_picture']['name'];
+                    $filename_text = $title.'.txt';
+                    $fileaccess = fopen('Articles/Texts/'.$filename_text,"w");
+                    fwrite($fileaccess,$_POST['article_content']);
+                    $fileaccess.fclose();
+
+                    $insert = "INSERT INTO articles (title, body_filename, photo_filename) values ('$title', '$filename_text', '$filename_photo')";
+
+                    if (!mysqli_query($conn, $insert)){
+                        echo("Error description: " . mysqli_error($conn));
+                        echo "<h3 style = 'color:red; text-align:center'>Wrong Input Values, review values</h3>";
+                    } else {
+                        header("Location: create-article.php");
+                    }
+                };
+            ?>
             </form>
         </div>
         <div class="right"></div>

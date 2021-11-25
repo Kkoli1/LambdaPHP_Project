@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2021 at 08:24 PM
+-- Generation Time: Nov 25, 2021 at 08:07 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -45,7 +45,18 @@ CREATE TABLE `address` (
 CREATE TABLE `articles` (
   `article_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `body_filename` varchar(255) NOT NULL
+  `body_filename` varchar(255) NOT NULL,
+  `photo_filename` varchar(255) NOT NULL DEFAULT 'default.png'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article_home`
+--
+
+CREATE TABLE `article_home` (
+  `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -55,14 +66,22 @@ CREATE TABLE `articles` (
 --
 
 CREATE TABLE `business` (
-  `business_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `username` varchar(15) NOT NULL UNIQUE,
+  `business_id` int(11) NOT NULL,
+  `username` varchar(15) NOT NULL,
   `photo` varchar(255) NOT NULL DEFAULT 'Logo_Place.png',
   `password` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
   `business_description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `business`
+--
+
+INSERT INTO `business` (`business_id`, `username`, `photo`, `password`, `category`, `business_name`, `business_description`) VALUES
+(1000000, 'Admin', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'ADMIN', 'ABC Mall (Admin)', 'ABC Mall Account Administrator'),
+(1000001, 'ABCMall', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'GENERAL', 'ABC Mall (Business)', 'ABC Mall Account Administrator');
 
 -- --------------------------------------------------------
 
@@ -89,21 +108,23 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
 
-
+--
+-- Table structure for table `cinema`
+--
 
 CREATE TABLE `cinema` (
-  `movie_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `movie_id` int(11) NOT NULL,
   `movie_name` varchar(255) NOT NULL,
   `movie_description` varchar(255) NOT NULL,
   `start_time` time NOT NULL,
   `duration_hours` int(2) NOT NULL,
   `duration_mins` int(2) NOT NULL,
-  `file_picture` varchar(255),
-  `file_trailer` varchar(255),
+  `file_picture` varchar(255) DEFAULT NULL,
+  `file_trailer` varchar(255) DEFAULT NULL,
   `cinema_no` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 -- --------------------------------------------------------
 
@@ -112,11 +133,11 @@ CREATE TABLE `cinema` (
 --
 
 CREATE TABLE `customer` (
-  `Customer_ID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `Customer_ID` int(11) NOT NULL,
   `first_name` varchar(250) NOT NULL,
   `middle_name` varchar(250) DEFAULT NULL,
   `last_name` varchar(250) NOT NULL,
-  `username` varchar(15) NOT NULL UNIQUE,
+  `username` varchar(15) NOT NULL,
   `user_password` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -128,7 +149,7 @@ CREATE TABLE `customer` (
 --
 
 CREATE TABLE `customer_orders` (
-  `order_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `order_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -139,7 +160,7 @@ CREATE TABLE `customer_orders` (
 --
 
 CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `delivery_id` int(11) NOT NULL,
   `date_of_delivery` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -150,11 +171,11 @@ CREATE TABLE `delivery` (
 --
 
 CREATE TABLE `events` (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `event_id` int(11) NOT NULL,
   `event_title` varchar(255) NOT NULL,
   `event_description` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -164,7 +185,7 @@ CREATE TABLE `events` (
 --
 
 CREATE TABLE `inventory` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `product_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_description` varchar(255) DEFAULT NULL,
@@ -196,7 +217,7 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `seller` (
-  `seller_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `seller_id` int(11) NOT NULL,
   `business_name` varchar(255) NOT NULL,
   `business_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -211,6 +232,24 @@ CREATE TABLE `seller` (
 ALTER TABLE `address`
   ADD KEY `customer_id` (`customer_id`);
 
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`article_id`);
+
+--
+-- Indexes for table `article_home`
+--
+ALTER TABLE `article_home`
+  ADD KEY `article_id` (`article_id`);
+
+--
+-- Indexes for table `business`
+--
+ALTER TABLE `business`
+  ADD PRIMARY KEY (`business_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `card_information`
@@ -225,18 +264,43 @@ ALTER TABLE `cart`
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `product_id` (`product_id`);
 
+--
+-- Indexes for table `cinema`
+--
+ALTER TABLE `cinema`
+  ADD PRIMARY KEY (`movie_id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`Customer_ID`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
+  ADD PRIMARY KEY (`order_id`),
   ADD KEY `customer_id` (`customer_id`);
 
+--
+-- Indexes for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`delivery_id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`event_id`);
 
 --
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
+  ADD PRIMARY KEY (`product_id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `seller_id` (`seller_id`);
 
@@ -253,7 +317,66 @@ ALTER TABLE `orders`
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
+  ADD PRIMARY KEY (`seller_id`),
   ADD KEY `business_id` (`business_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000012;
+
+--
+-- AUTO_INCREMENT for table `business`
+--
+ALTER TABLE `business`
+  MODIFY `business_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000002;
+
+--
+-- AUTO_INCREMENT for table `cinema`
+--
+ALTER TABLE `cinema`
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `customer_orders`
+--
+ALTER TABLE `customer_orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
+--
+-- AUTO_INCREMENT for table `seller`
+--
+ALTER TABLE `seller`
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
 
 --
 -- Constraints for dumped tables
@@ -264,6 +387,12 @@ ALTER TABLE `seller`
 --
 ALTER TABLE `address`
   ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`Customer_ID`);
+
+--
+-- Constraints for table `article_home`
+--
+ALTER TABLE `article_home`
+  ADD CONSTRAINT `article_home_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
 
 --
 -- Constraints for table `card_information`
@@ -304,23 +433,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `seller`
   ADD CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
-
-
-ALTER TABLE `orders` AUTO_INCREMENT = 1000000;
-ALTER TABLE `business` AUTO_INCREMENT = 1000000;
-ALTER TABLE `customer_orders` AUTO_INCREMENT = 1000000;
-ALTER TABLE `inventory` AUTO_INCREMENT = 1000000;
-ALTER TABLE `events` AUTO_INCREMENT = 1000000;
-ALTER TABLE `delivery` AUTO_INCREMENT = 1000000;
-ALTER TABLE `seller` AUTO_INCREMENT = 1000000;
-ALTER TABLE `cinema` AUTO_INCREMENT = 1000000;
-
-
-INSERT INTO business (business_name,business_description,category,password,username) VALUES ("ABC Mall (Admin)", "ABC Mall Account Administrator", "ADMIN", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "Admin");
-INSERT INTO business (business_name,business_description,category,password,username,photo) VALUES ("ABC Mall (Business)", "ABC Mall Account Administrator", "GENERAL", "1484ea79ca1be5eb9b411215d6460f82e6c6425e", "ABCMall", "ABCMall.png");
-
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
