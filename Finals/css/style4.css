@@ -998,3 +998,42 @@ input[type=date]{
     content: " ";
     outline: 1px solid rgb(51, 71, 86, 0.6);
 }
+
+.grid-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.grid-container .grid-tile{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.grid-tile .cinema-poster{
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    outline: 1px solid #334756;
+}
+
+#resto-img{
+    height: 200px;
+}
+
+.grid-tile .cinema-poster img{
+    width: 100%;
+}
+
+.grid-tile h3{
+    font-weight: 300;
+}
