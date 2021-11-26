@@ -92,7 +92,7 @@
 
             <?php 
                 if (mysqli_num_rows($result) == 0){
-                    echo "<h3 style = 'color:blue'> DB is EMPTY </h3>";
+                    
                 } else {
 
                     while ($qValue = mysqli_fetch_assoc($result)){
@@ -144,7 +144,7 @@
             }
             ?>
 
-                <form action="add-event.php" method="post">
+                <form action="add-event.php" method="post" id="delete-form">
                     <div class="delete-form-container">
                         <input type="text" name="event" id="delete-business" placeholder="Enter Event Name">
                         <input type="submit" name="Delete" value="Delete" id="Delete">

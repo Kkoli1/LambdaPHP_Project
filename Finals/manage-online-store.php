@@ -139,10 +139,7 @@ $result = mysqli_query($conn, $query);
             ?>
             
 
-
-            
-            
-            <form action="add-business.php" method="post">
+            <form action="add-business.php" method="post" id="delete-form">
                     <div class="delete-form-container">
                         <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
                         <input type="submit" name="Delete" value="Delete" id="Delete">

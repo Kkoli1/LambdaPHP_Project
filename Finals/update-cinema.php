@@ -114,7 +114,7 @@
 
             <?php 
                 if (mysqli_num_rows($result) == 0){
-                    echo "<h3 style = 'color:blue'> DB is EMPTY </h3>";
+                    
                 } else {
 
                     while ($qValue = mysqli_fetch_assoc($result)){
@@ -173,12 +173,13 @@
                     }
                 ?>
 
-                    <form action="update-cinema.php" method="post">
-                    <div class="delete-form-container">
-                        <input type="text" name="movie_name" id="delete-business" placeholder="Movie Name">
-                        <input type="text" name="cinema_num" id="delete-business" placeholder="Cinema#">
-                        <input type="submit" name="Delete" value="Delete" id="Delete">
-                    </div> 
+                    <form action="update-cinema.php" method="post" id="delete-form">
+                        <div class="delete-form-container">
+                            <input type="text" name="movie_name" id="delete-business" placeholder="Movie Name">
+                            <input type="text" name="cinema_num" id="delete-business" placeholder="Cinema#">
+                            <input type="submit" name="Delete" value="Delete" id="Delete">
+                        </div> 
+                    </form>
                     
                     <?php 
                     

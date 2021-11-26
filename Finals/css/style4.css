@@ -432,7 +432,6 @@ input[type=date]{
 }
 
 #item-group{
-    /* outline: 1px solid pink; */
     width: 190px;
     overflow-x: hidden;
 }
@@ -552,14 +551,23 @@ input[type=date]{
 .delete-form-container{
     margin: 20px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
+    
+}
+
+#delete-form{
+    flex-basis: 821.95px;
 }
 
 .delete-form-container :nth-child(2){
     margin-top: unset;
     width: 120px;
+}
+
+.delete-form-container input[type=submit]{
+    margin-top: unset;
 }
 
 .explore-list-header-2,
@@ -598,7 +606,6 @@ input[type=date]{
 }
 
 .explore-list-head{
-    /* outline: 1px solid pink; */
     display: flex;
     justify-content: center;
     align-items: center;

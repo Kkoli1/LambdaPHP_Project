@@ -108,7 +108,7 @@
             <!-- Displaying Business -->
             <?php 
                 if (mysqli_num_rows($result) == 0){
-                    echo "<h3 style = 'color:red'> DB is EMPTY </h3>";
+                    
                 } else {
 
                     while ($qValue = mysqli_fetch_assoc($result)){
