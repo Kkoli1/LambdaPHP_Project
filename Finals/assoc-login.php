@@ -1,5 +1,13 @@
 <?php
+session_start();
+
+
+
 include('dbconnect.php');
+
+
+
+
 ?>
 
 
@@ -65,6 +73,8 @@ include('dbconnect.php');
                         if ($qValues['category'] == "ADMIN"){
                             echo "<h4 style = 'color:red;'>Admin, Please use the Admin Log in</h4>";
                         } else {
+                            $_SESSION['business_id'] = $qValues['business_id'];
+                            $_SESSION['username'] = $qValues['username'];
                             header("Location: assoc-menu.php");
                         }
     
@@ -79,5 +89,18 @@ include('dbconnect.php');
             <a href="admin-assoc-login.php">< Back</a>
         </div>
     </section>
+
+<?php 
+
+
+if (isset($_GET['logout'])){
+    session_destroy();
+    header("Location: assoc-login.php");
+}
+
+?>
+
 </body>
+
+
 </html>

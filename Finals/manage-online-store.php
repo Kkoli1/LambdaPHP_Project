@@ -1,3 +1,13 @@
+<?php
+session_start();
+include ("dbconnect.php");
+$query = "SELECT * from inventory where category ='ECOMMERCE'";
+$result = mysqli_query($conn, $query);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +34,7 @@
         </a>
 
         <div class="login-as-text-container">
-            <h2>Logged in as, <a href="assoc-menu.php">Associate</a></h2>
+            <h2>Logged in as, <a href="assoc-menu.php"><?php echo $_SESSION['username']?></a></h2>
         </div>
     </header>
 
@@ -39,8 +49,10 @@
                     <div class="item-row2">
                         <label for="item-stock">Stock:</label>
                         <input type="text" name="item-stock" id="item-stock">
-                        <label for="item-group">Group:</label>
-                        <input type="text" name="item-group" id="item-group" placeholder="Sample Group 1">
+                        <label for="item-group">Photos:</label>
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <label for="item-price">Price:</label>
                         <input type="text" name="item-price" id="item-price">
                     </div>
@@ -50,66 +62,91 @@
                     <div class="item-submit">
                         <input type="submit" value="+">
                     </div>
+
+                    
+
                 </div>
             </form>
             <!-- Displaying Items -->
-            <div class="display-container">
 
 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Item ID</h3>
-                    </div>
-                    <div class="display-value">
-                        10000001
-                    </div>
-                </div>  
 
 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Item Name</h3>
-                    </div>
-                    <div class="display-value">
-                        Sample Item 1
-                    </div>
-                </div>  
+            
+            <?php 
 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Stock</h3>
+                if (mysqli_num_rows($result) == 0){
+                    
+                } else {
+
+                     while ($qValue = mysqli_fetch_assoc($result)){
+                    
+            ?>
+
+                <div class="display-container">
+
+
+                    <div class="display-infos" id="business-infos">
+                        <div class="display-label">
+                            <h3>Item ID</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['product_id'];?>
+                        </div>
+                    </div>  
+
+
+                    <div class="display-infos" id="business-infos">
+                        <div class="display-label">
+                            <h3>Item Name</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['item_name'];?>
+                        </div>
+                    </div>  
+
+                    <div class="display-infos" id="business-infos">
+                        <div class="display-label">
+                            <h3>Stock</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['stock'];?>
+                        </div>
                     </div>
-                    <div class="display-value">
-                        900
-                    </div>
+                    
+
+                    <div class="display-infos" id="business-infos">
+                        <div class="display-label">
+                            <h3>Price</h3>
+                        </div>
+                        <div class="display-value" id="password-wrap">
+                            <?php echo $qValue['price'];?>
+                        </div>
+                    </div> 
+
+                    <div class="display-infos" id="info-scroll">
+                        <div class="display-label">
+                            <h3>Information</h3>
+                        </div>
+                        <div class="display-value">
+                            <?php echo $qValue['item_description'];?>
+                        </div>
+                    </div> 
                 </div>
-                
+            <?php
+                    }
+                }
+            ?>
+            
 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Price</h3>
-                    </div>
-                    <div class="display-value" id="password-wrap">
-                        22.75
-                    </div>
-                </div> 
 
-                <div class="display-infos" id="info-scroll">
-                    <div class="display-label">
-                        <h3>Information</h3>
-                    </div>
-                    <div class="display-value">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsum omnis sint sit voluptatem magni vitae repellendus quam cumque maxime.
-                    </div>
-                </div> 
-            </div>
+            
             
             <form action="add-business.php" method="post">
                     <div class="delete-form-container">
                         <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
                         <input type="submit" name="Delete" value="Delete" id="Delete">
-                    </div> 
-                    
+                    </div>       
             </form>
         </div>
         <div class="right"></div>

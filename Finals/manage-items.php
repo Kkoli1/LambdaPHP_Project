@@ -1,3 +1,12 @@
+<?php
+session_start();
+include ("dbconnect.php");
+$query = "SELECT * from inventory where category !='ECOMMERCE'";
+$result = mysqli_query($conn, $query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +49,10 @@
                         <label for="item-available">Available:</label>
                         <input type="text" name="item-available" id="item-available">
                         <label for="item-group">Image:</label>
-                        <input type="file" name="item-group" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
+                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <label for="item-price">Price:</label>
                         <input type="text" name="item-price" id="item-price">
                     </div>
@@ -54,6 +66,18 @@
             </form>
             <!-- Displaying Items -->
             <div class="display-container">
+
+
+                 <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Item_ID</h3>
+                    </div>
+                    <div class="display-value">
+                        100000001
+                    </div>
+                </div>  
+
+
                 <div class="display-infos" id="business-infos">
                     <div class="display-label">
                         <h3>Item Name</h3>
@@ -65,22 +89,13 @@
 
                 <div class="display-infos" id="business-infos">
                     <div class="display-label">
-                        <h3>Avl</h3>
+                        <h3>Stock</h3>
                     </div>
                     <div class="display-value">
                         Yes
                     </div>
                 </div>
                 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Group</h3>
-                    </div>
-                    <div class="display-value" id="password-wrap">
-                        Sample 
-                        Group 1
-                    </div>
-                </div> 
 
                 <div class="display-infos" id="business-infos">
                     <div class="display-label">

@@ -186,11 +186,11 @@ CREATE TABLE `events` (
 
 CREATE TABLE `inventory` (
   `product_id` int(11) NOT NULL,
-  `seller_id` int(11) NOT NULL,
+  `business_id` int(11) NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_description` varchar(255) DEFAULT NULL,
   `category` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` float NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -207,24 +207,11 @@ CREATE TABLE `orders` (
   `quantity` int(11) NOT NULL,
   `total_price` int(11) NOT NULL,
   `delivery_id` int(11) NOT NULL,
-  `seller_id` int(11) NOT NULL
+  `business_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `seller`
---
-
-CREATE TABLE `seller` (
-  `seller_id` int(11) NOT NULL,
-  `business_name` varchar(255) NOT NULL,
-  `business_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `address`
@@ -302,7 +289,7 @@ ALTER TABLE `events`
 ALTER TABLE `inventory`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `seller_id` (`seller_id`);
+  ADD KEY `business_id` (`business_id`);
 
 --
 -- Indexes for table `orders`
@@ -311,14 +298,9 @@ ALTER TABLE `orders`
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `delivery_id` (`delivery_id`),
-  ADD KEY `seller_id` (`seller_id`);
-
---
--- Indexes for table `seller`
---
-ALTER TABLE `seller`
-  ADD PRIMARY KEY (`seller_id`),
   ADD KEY `business_id` (`business_id`);
+
+
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -372,11 +354,7 @@ ALTER TABLE `events`
 ALTER TABLE `inventory`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
 
---
--- AUTO_INCREMENT for table `seller`
---
-ALTER TABLE `seller`
-  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+
 
 --
 -- Constraints for dumped tables
@@ -417,7 +395,7 @@ ALTER TABLE `customer_orders`
 -- Constraints for table `inventory`
 --
 ALTER TABLE `inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`);
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
 
 --
 -- Constraints for table `orders`
@@ -426,13 +404,11 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `customer_orders` (`order_id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `inventory` (`product_id`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
-  ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`);
+  ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
 
 --
 -- Constraints for table `seller`
---
-ALTER TABLE `seller`
-  ADD CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

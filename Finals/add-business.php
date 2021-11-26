@@ -66,6 +66,7 @@
                             <option value="ADMIN">ADMIN</option>
                             <option value="SERVICES">SERVICES</option>
                             <option value="GENEREAL">GENERAL</option>
+                            <option value="ADMIN">CLOTHING</option>
                         </select>
                     </div>
                     <div class="add-password">

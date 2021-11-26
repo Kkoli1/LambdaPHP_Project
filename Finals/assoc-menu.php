@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +39,7 @@
                 <a href="manage-online-store.php"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store</h3></div></a>
             </div> 
             <div class="log-out-container">
-                <a href="#"><div class="admin-logout"><h2>Log Out</h2></div></a>
+                <a href="assoc-login.php?logout=1"><div class="admin-logout"><h2>Log Out</h2></div></a>
             </div>
         </div>
     </section>
