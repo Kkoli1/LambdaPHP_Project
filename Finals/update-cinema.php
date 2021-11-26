@@ -173,13 +173,32 @@
                     }
                 ?>
 
-                <form action="add-business.php" method="post">
+                    <form action="update-cinema.php" method="post">
                     <div class="delete-form-container">
-                        <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
+                        <input type="text" name="movie_name" id="delete-business" placeholder="Movie Name">
+                        <input type="text" name="cinema_num" id="delete-business" placeholder="Cinema#">
                         <input type="submit" name="Delete" value="Delete" id="Delete">
                     </div> 
                     
-                </form>
+                    <?php 
+                    
+                        if(isset($_POST['Delete'])){
+                            $del_name = $_POST['movie_name'];
+                            $del_cinema_num = $_POST['cinema_num'];
+
+                            $query = "DELETE FROM cinema WHERE movie_name = '$del_name' and cinema_no = $del_cinema_num";
+
+                            if (!mysqli_query($conn, $query)){
+                                echo("Error description: " . mysqli_error($conn));
+                                echo "<h3 style = 'color:red; text-align:center'>No Existing Account Name</h3>";
+                            } else {
+                                echo "<h3> The Change will apply after the refresh</h3>";
+                            }
+
+                        }
+                    
+                    
+                    ?>
         </div>
         <div class="right"></div>
     </section>

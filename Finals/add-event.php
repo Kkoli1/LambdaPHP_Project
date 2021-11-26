@@ -144,12 +144,33 @@
             }
             ?>
 
-                <form action="add-business.php" method="post">
+                <form action="add-event.php" method="post">
                     <div class="delete-form-container">
-                        <input type="text" name="business" id="delete-business" placeholder="Enter Account Name">
+                        <input type="text" name="event" id="delete-business" placeholder="Enter Event Name">
                         <input type="submit" name="Delete" value="Delete" id="Delete">
                     </div> 
                     
+                    <?php 
+                    
+                        if(isset($_POST['Delete'])){
+                            $del_name = $_POST['event'];
+
+                            $query = "DELETE FROM events WHERE event_title = '$del_name'";
+
+                            if (!mysqli_query($conn, $query)){
+                                echo("Error description: " . mysqli_error($conn));
+                                echo "<h3 style = 'color:red; text-align:center'>No Existing Account Name</h3>";
+                            } else {
+                                echo "<h3> The Change will apply after the refresh</h3>";
+                            }
+
+                        }
+                    
+                    
+                    ?>
+
+
+
                 </form>
         </div>
         <div class="right"></div>

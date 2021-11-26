@@ -54,6 +54,18 @@
             </form>
             <!-- Displaying Items -->
             <div class="display-container">
+
+
+                <div class="display-infos" id="business-infos">
+                    <div class="display-label">
+                        <h3>Item ID</h3>
+                    </div>
+                    <div class="display-value">
+                        10000001
+                    </div>
+                </div>  
+
+
                 <div class="display-infos" id="business-infos">
                     <div class="display-label">
                         <h3>Item Name</h3>
@@ -72,15 +84,6 @@
                     </div>
                 </div>
                 
-                <div class="display-infos" id="business-infos">
-                    <div class="display-label">
-                        <h3>Group</h3>
-                    </div>
-                    <div class="display-value" id="password-wrap">
-                        Sample 
-                        Group 1
-                    </div>
-                </div> 
 
                 <div class="display-infos" id="business-infos">
                     <div class="display-label">
