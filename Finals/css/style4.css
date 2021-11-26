@@ -431,6 +431,12 @@ input[type=date]{
     margin-top: 20px;
 }
 
+#item-group{
+    /* outline: 1px solid pink; */
+    width: 190px;
+    overflow-x: hidden;
+}
+
 #item-available{
     width: 20px;
 }

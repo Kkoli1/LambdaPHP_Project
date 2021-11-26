@@ -39,8 +39,8 @@
                     <div class="item-row2">
                         <label for="item-available">Available:</label>
                         <input type="text" name="item-available" id="item-available">
-                        <label for="item-group">Group:</label>
-                        <input type="text" name="item-group" id="item-group" placeholder="Sample Group 1">
+                        <label for="item-group">Image:</label>
+                        <input type="file" name="item-group" id="item-group" placeholder="Sample Group 1">
                         <label for="item-price">Price:</label>
                         <input type="text" name="item-price" id="item-price">
                     </div>
