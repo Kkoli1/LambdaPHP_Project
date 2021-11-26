@@ -69,14 +69,14 @@
                 </a>
             </div>
             <div class="main-nav-button" id="main-restaurant-button">
-                <a href="">
+                <a href="food.php">
                     <div id="out">
                         <div id="in"><b>RESTAURANTS</b></div>
                     </div>
                 </a>
             </div>
             <div class="main-nav-button" id="main-cinema-button" >
-                <a href="">
+                <a href="cinema.php">
                     <div id="out">
                         <div id="in"><b>CINEMA</b></div>
                     </div>
