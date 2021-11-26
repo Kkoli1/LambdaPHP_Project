@@ -6,7 +6,6 @@
     // $password = "1234";
     // $db = "malldb";
 
-    // jasonpogs version:
     $servername = "localhost";
     $username = "root";
     $password = "";
