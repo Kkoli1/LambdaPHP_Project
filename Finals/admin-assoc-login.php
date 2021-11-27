@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
     <link rel="stylesheet" href="css/navigation-general.css">
     <link rel="stylesheet" href="css/style3.css">
     <title>Admin/Associate Login</title>
@@ -27,7 +27,7 @@
     <section class="admin-assoc-choose" >
         <div class="choose" id="admin-choose">
             <div class="image-container">
-                <img src="DesignMaterials/Icons/outline_admin_panel_settings_black_48dp.png" alt="">
+                <img src="DesignMaterials/Icons/admin_panel_settings_black_24dp.svg" alt="admin-icon">
             </div>
             
             <div class="choose-label">
@@ -43,7 +43,7 @@
         </div>
         <div class="choose" id="assoc-choose">
             <div class="image-container">
-                <img src="DesignMaterials/Icons/outline_manage_accounts_black_48dp.png" alt="">
+                <img src="DesignMaterials/Icons/manage_accounts_black_24dp.svg" alt="manage-accounts-icon">
             </div>
             
             

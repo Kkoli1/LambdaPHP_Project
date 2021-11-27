@@ -449,3 +449,116 @@
 .bottom span {
     font-weight: 600;
 }
+
+/* =========================== store-view.php =========================== */
+
+.store-view-container {
+    max-width: 1100px;
+    height: auto;
+    margin: 40px auto;
+}
+
+.svc-top {
+    width: auto;
+    height: 200px;
+    border-radius: 21px;
+    padding: 20px;
+    border: 1px solid rgba(51, 71, 86, 0.3);
+}
+
+.svc-top div {
+    width: 130px;
+    height: 130px;
+    border-radius: 11px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    margin: 12px 20px;
+    border: 1px solid rgba(51, 71, 86, 0.3);
+}
+
+.svc-top div img {
+    width: 50px;
+    opacity: 0.3;
+}
+
+.svc-top h1 {
+    padding-top: 20px;
+    font-size: 35px;
+    font-weight: 600;
+    color: rgba(51, 71, 86, 1);
+}
+
+.svc-top p {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(51, 71, 86, 1);
+}
+
+.svc-mid {
+    width: auto;
+    line-height: 0.2;
+    height: 60px;
+    padding-top: 25px;
+}
+
+.svc-mid h2 {
+    font-size: 27px;
+    color: rgba(51, 71, 86, 1);
+    font-weight: 400;
+    padding: 0 10px;
+}
+
+.svc-mid hr {
+    margin-left: 95px;
+    opacity: 0.3;
+}
+
+.svc-bottom {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 46px;
+    justify-content: left;
+}
+
+.svc-bottom-items {
+    width: 240px;
+    height: 290px;
+    border-radius: 11px;
+    border: 1px solid rgba(51, 71, 86, 0.3);
+}
+
+.svc-bottom-items-top {
+    width: auto;
+    height: 63%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(51, 71, 86, 0.3);
+}
+
+.svc-bottom-items-top img {
+    width: 70px;
+    opacity: 0.3;
+}
+
+.svc-bottom-items-down {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.svc-bottom-items-down h2 {
+    font-weight: 300;
+    font-size: 19px;
+}
+
+.svc-bottom-items-down h3 {
+    font-weight: 400;
+    font-size: 21px;
+    color: rgba(51, 71, 86, 1);
+}
+

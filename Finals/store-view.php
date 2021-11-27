@@ -10,7 +10,7 @@
         <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
         <link rel="stylesheet" href="css/navigation-general.css">
         <link rel="stylesheet" href="css/style5.css">
-        <title>Movie 1</title>
+        <title>Store View</title>
     </head>
     <body>
         <!-- Start of Header -->
@@ -36,34 +36,39 @@
         </header>
         <!-- End of Header -->
 
-        <h1 id="movie-name">Movie 1</h1>
-        <!-- Start of Per Movie Container -->
-        <div class="per-movie-container">
-            <div class="pmc-left">
-                <h3>Video Trailer</h3>
+        <!-- Start of Store View Container -->
+        <div class="store-view-container">
+            <div class="svc-top">
                 <div>
-                    <video controls>
-                        <source src="Cinema/Trailers/sample.mp4" type="video/mp4">
-                    </video>
+                    <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
                 </div>
+                <h1>Store Name</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed neque ipsum. Integer semper velit nec faucibus ultricies. Fusce eget sem gravida, mattis est quis, porttitor dui. </p>
             </div>
-            <div class="pmc-right">
-                <h3>Poster & Details</h3>
-                <div class="pmc-right-inner">
-                    <div class="top">
-                        <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
-                    </div>
-                    <div class="bottom">
-                        <h4>Start Time: <span>3:00 AM</span></h4>
-                        <h4>Duration: <span>2hrs 35 mins</span></h4>
-                        <h4>Cinema #: <span>69</span></h4>
-                        <h4>Description: 
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit ac leo sit amet sodales.</span>
-                        </h4>
-                    </div>
-                </div>
+            <div class="svc-mid">
+                <h2>Items</h2>
+                <hr>
+            </div>
+            <div class="svc-bottom">
+                <?php
+                    // place no. of items here
+                    $n = 14;
+                    for ($i = 0; $i < $n; $i++) {
+                        ?>
+                            <div class="svc-bottom-items">
+                                <div class="svc-bottom-items-top">
+                                    <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
+                                </div>
+                                <div class="svc-bottom-items-down">
+                                    <h2>Sample Item <?php echo ($i + 1); ?></h3>
+                                    <h3>PHP 889.25</h3>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
-        <!-- End of Per Movie Container -->
+        <!-- End of Store View Container -->
     </body>
 </html>

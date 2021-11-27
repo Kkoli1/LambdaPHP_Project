@@ -1,14 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header{
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
     background-color: #082032;
     border: solid;
     border-color: #082032;
     display: flex;
+    padding: 0 30px;
     justify-content: space-between;
 }
 
@@ -18,64 +23,71 @@ header{
 
 .logo-container{
     display: grid;
-    grid-template-columns: 130px auto;
+    grid-template-columns: 110px auto;
     grid-template-rows: auto auto;
-    margin: 10px 0 10px 30px;
+    margin: 15px 0 10px 35px;
     width: fit-content;
 }
 
 .logo-container img{
-    width: 120px;
+    width: 85px;
 }
 
 .abc-mall{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 50px;
+    font-size: 40px;
     color: white;
     height: fit-content;
-    padding-top: 23px;
-    padding-left: 10px;
-    letter-spacing: 5px;
+    padding-top: 15px;
 }
 
 .mall-slogan{
     font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 300;
     height: fit-content;
     color: white;
     position: relative;
-    padding-left: 10px;
-    top: -14px;
+    top: -5px;
 }
 
-.yellow-button button{
+.yellow-button {
+    width: auto;
+    height: auto;
+    padding: 10px 5px;
+}
+
+.yellow-button a {
     background-color: rgba(240, 165, 0,1);
     transition: background-color 0.2s ease-in-out 0s;
     font-size: medium;
     border-radius: 20px;
-    height: 40px;
-    width: 220px;
-    margin-right: 10px;
+    margin-right: 6px;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 9px 80px;
 }
 
-.yellow-button button:hover{
+.yellow-button a:hover{
     background-color: rgba(240, 165, 0, 0.8);
 }
 
-.search-button{
-    display: flex;
+.search-button {
     width: 300px;
     border: 1px solid white;
     border-radius: 20px;
+    padding-top: 7px;
     height: 40px;
-    justify-content: center;
 }
 
-.search-button input{
+.search-button input[type=text] {
     width: 250px;
     background-color: transparent;
     color: white;
     border: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
     margin-left: 15px;
 }
 
@@ -87,14 +99,19 @@ header{
     color: transparent;
 }
 
-.search-button img{
-    width: 20px;
-    height: 20px;
-    margin: auto 5px auto auto;
-}
-
 .search-button input::placeholder{
     text-align: center;
+    color: white;
+}
+
+.search-button button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.search-button i {
+    font-size: 15px;
     color: white;
 }
 
@@ -102,35 +119,45 @@ header{
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
-    margin: 10px 20px 10px 0px;
-    height: 146px;
+    margin: 17px 20px 10px 0px;
+    height: 115px;
 }
 
-.icons{
-    display: flex;
-    align-content: center;
+.icons {
+    width: auto;
+    height: auto;
+    padding: 20px 20px 0 20px;
 }
 
-.icons button{
-    height: 30px;
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 25px;
+.icons img {
+    float: left;
+    margin-right: 20px;
 }
 
-.icons button a{
+.icons-login {
+    border-radius: 21px;
     text-decoration: none;
-    color: rgba(8, 32, 50, 1);
-} 
+    color: #082032;
+    font-weight: 600;
+    background: white;
+    padding: 5px 70px;
+}
 
-.icons a img{
-    margin: 25px 10px 3px 0;
+.icons-login:hover {
+    background: rgb(219, 219, 219);
+    transition: background-color 0.2s ease-in-out 0s;
+}
+
+.main-page {
+    max-width: 1310px;
+    height: auto;
+    margin: 20px auto;
 }
 
 .main-article{
     display: grid;
     grid-template-rows: 80% 20%;
-    border-radius: 50px;
+    border-radius: 21px;
 }
 
 .main-article-label{
@@ -138,23 +165,23 @@ header{
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     color: white;
-    border:1px solid black;
     display: flex;
-    align-items: center;
-    font-family: sans-serif;
+    padding-top: 18px;
 }
 
-.text{
+.text {
     height: fit-content;
-    margin-left: 35px;
+    margin-left: 30px;
 }
 
 .text h1{
-    font-size: 210%;
+    font-size: 26px;
+    font-weight: 600;
 }
 
-.text h5{
-    font-size: 90%;
+.text h5 {
+    font-size: 15px;
+    font-weight: 300;
 }
 
 .main-article-img{
@@ -166,19 +193,22 @@ header{
     border-top-right-radius: inherit;
 }
 
-
 .main-nav-button{
-    border-radius: 30px;
-    font-family: sans-serif;
+    border-radius: 21px;
+}
+
+.main-nav-button {
+    font-weight: 600;
+    font-size: 13px;
 }
 
 #main-shop-button{
-    background-color: rgba(0, 148, 212,1);
+    background-color: #2C85C9;
     transition: background-color 0.2s ease-in-out 0s;
 }
 
 #main-shop-button:hover{
-    background-color: rgba(0, 148, 212,0.8);
+    background-color: #1b5683;
 }
 
 #main-shop-button a{
@@ -198,15 +228,13 @@ header{
     font-size: 200%;
 }
 
-
-
 #main-restaurant-button{
-    background-color: rgba(120, 237, 74,1);
+    background-color: #8DC92C;
     transition: background-color 0.2s ease-in-out 0s;
 }
 
 #main-restaurant-button:hover{
-    background-color: rgba(120, 237, 74,0.8);
+    background-color: #6f9e22;
 }
 
 #main-restaurant-button a{
@@ -226,22 +254,21 @@ header{
     font-size: 200%;
 }
 
-
 #main-cinema-button{
-    background-color: rgba(209, 139, 42,1);
+    background-color: #C9802C;
     transition: background-color 0.2s ease-in-out 0s;
 }
 
 #main-cinema-button:hover{
-    background-color: rgba(209, 139, 42,0.8);
+    background-color: #7a4d19;
 }
 
-#main-cinema-button a{
+#main-cinema-button a {
     text-decoration: none;
     color:white;
 }
 
-#main-cinema-button a #out{
+#main-cinema-button a #out {
     height: 100%;
     border-radius: 30px;
     display: flex;
@@ -253,10 +280,10 @@ header{
     font-size: 200%;
 }
 
-.sub-article{
+.sub-article {
     display: grid;
     grid-template-rows: 80% 20%;
-    border-radius: 50px;
+    border-radius: 21px;
 }
 
 .articles-and-nav{
@@ -270,14 +297,14 @@ header{
     margin: 15px;
 }
 
-#sub-article-img1{
+#sub-article-img1 {
     background-image: url("../DesignMaterials/Images/https___blogs-images.forbes.com_trevornace_files_2015_11_beautiful-places-world-1200x900.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-    border: 1px solid #334756;
+    border: 1px solid rgba(51, 71, 86, 0.3);
 }
 
 #sub-article-img2{
@@ -287,7 +314,7 @@ header{
     background-position:center;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-    border: 1px solid #334756;
+    border: 1px solid rgba(51, 71, 86, 0.3);
 }
 
 #sub-article-img3{
@@ -297,19 +324,22 @@ header{
     background-position:center;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-    border: 1px solid #334756;
+    border: 1px solid rgba(51, 71, 86, 0.3);
 }
 
-.sub-article-label{
-    font-family: 'Open Sans', sans-serif;
+.sub-article-label {
     font-size: 15px;
-    background-color: white;
+    color: rgba(51, 71, 86, 1);
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
-    border: 1px solid #334756;
+    border: 1px solid rgba(51, 71, 86, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sub-article-label h4 {
+    font-weight: 400;
 }
 
 .admin-assoc-login{
@@ -325,7 +355,7 @@ header{
     border: none;
     color: white;
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     background-color: rgba(8, 32, 50,1);
     cursor: pointer;
 }
@@ -333,7 +363,3 @@ header{
 .admin-assoc-login-button button:hover{
     background-color: rgba(8, 32, 50,0.9);
 }
-
-
-
-
