@@ -27,7 +27,7 @@
     <section class="admin-assoc-choose" >
         <div class="choose" id="admin-choose">
             <div class="image-container">
-                <img src="DesignMaterials/Icons/outline_admin_panel_settings_black_48dp.png" alt="">
+                <img src="DesignMaterials/Icons/admin_panel_settings_black_24dp.svg" alt="admin-icon">
             </div>
             
             <div class="choose-label">
@@ -43,7 +43,7 @@
         </div>
         <div class="choose" id="assoc-choose">
             <div class="image-container">
-                <img src="DesignMaterials/Icons/outline_manage_accounts_black_48dp.png" alt="">
+                <img src="DesignMaterials/Icons/manage_accounts_black_24dp.svg" alt="manage-accounts-icon">
             </div>
             
             
