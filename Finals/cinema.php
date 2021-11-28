@@ -1,3 +1,7 @@
+<?php
+include ("dbconnect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,47 +50,33 @@
                 <h1>Cinema <span>(Now Showing)</span></h1>
             </div>
 
+            <?php
+
+            $query = "SELECT * FROM cinema";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0){
+                while ($qValue = mysqli_fetch_assoc($result)){
+
+                
+    
+            ?>
+
             <div class="grid-container">
                 <div class="grid-tile">
                     <a href="">
                         <div class="cinema-poster">
-                            <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
+                            <?php $img = "Cinema/Posters/".$qValue['file_picture'];?>
+                            <img src=<?php echo $img; ?> alt="">
                         </div>
                     </a>
-                    <h3>Movie 1</h3>
-                    <h3>Cinema No. 1</h3>  
+                    <h3><?php echo $qValue['movie_name'] ?></h3>
+                    <h3>Cinema No. <?php echo $qValue['cinema_no'] ?></h3>  
                 </div>
-
-                <div class="grid-tile">
-                    <a href="">
-                        <div class="cinema-poster">
-                            <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
-                        </div>
-                    </a>
-                    <h3>Movie 2</h3>
-                    <h3>Cinema No. 2</h3>  
-                </div>
-
-                <div class="grid-tile">
-                    <a href="">
-                        <div class="cinema-poster">
-                            <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
-                        </div>
-                    </a>
-                    <h3>Movie 3</h3>
-                    <h3>Cinema No. 3</h3>  
-                </div>
-
-                <div class="grid-tile">
-                    <a href="">
-                        <div class="cinema-poster">
-                            <img src="DesignMaterials/Images/imageplaceholder.png" alt="">
-                        </div>
-                    </a>
-                    <h3>Movie 4</h3>
-                    <h3>Cinema No. 4</h3>  
-                </div>
-
+            <?php 
+                }
+            }
+            ?>
             </div>
         </div>
         <div class="right"></div>

@@ -1,3 +1,11 @@
+<?php
+
+    include("dbconnect.php");
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,16 +39,22 @@
                 <div class="img-container">
                     <img src="DesignMaterials/Icons/outline_account_circle_white_48dp.png" alt="Customer Icon">
                 </div>
-                <form action="" class="register-form">
+                <form action="" method="POST" class="register-form">
+                    
+                    <div class="contain">
+                        <input type="text" placeholder="First Name" name="first_name" class="inputs">
+                        <input type="text" placeholder="Last Name" name="last_name" class="inputs">
+                    </div>
                     <input type="text" placeholder="Username" name="username" class="inputs">
                     <input type="password" placeholder="Password" name="password" class="inputs">
+                    <input type="password" placeholder="Confirm Password" name="confirmpassword" class="inputs">
                    <div class="contain">
                         <div class="sex"> 
                             <label for="sex" id="sex-text">Sex:</label>
                             <label for="sex">M</label>
-                            <input type="radio" name="sex" id="male">
+                            <input type="radio" name="sex" id="male" value="male">
                             <label for="sex">F</label>
-                            <input type="radio" name="sex" id="female">
+                            <input type="radio" name="sex" id="female" value="male">
                         </div>
                         <div class="bday">
                             <label for="bday">Birthday:</label>
@@ -50,11 +64,76 @@
                    </div>
                     
                     <input type="email" name="email" id="email" placeholder="Email" class="inputs">
-                    <input type="text" name="address" id="address" placeholder="Address" class="inputs">
+                    <h2 style = "text-align: center">Address:</h2>
+                    <input type="text" name="street_address" id="address" placeholder="Street Address" class="inputs">
+                    <input type="text" name="city" id="address" placeholder="City" class="inputs">
+                    <input type="text" name="state" id="address" placeholder="State" class="inputs">
+                    <input type="text" name="zipcode" id="address" placeholder="Zipcode" class="inputs">
+                    <input type="text" name="country" id="address" placeholder="Country" class="inputs">
                     <div class="submit-container">
                         <input type="submit" name="submit" id="register-submit" value="SUBMIT"> 
                     </div>
                     
+
+                    <?php 
+                    
+                        if(isset($_POST['submit'])){
+                            $first_name = $_POST['first_name'];
+                            $last_name = $_POST['last_name'];
+                            $username = $_POST['username'];
+                            if ($_POST['password'] == $_POST['confirmpassword']){
+                                $user_password = sha1($_POST['password']);
+                            } else {
+                                echo "Check password";
+                            }
+                            $email = $_POST['email'];
+                            $sex = $_POST['sex'];
+                            $date = $_POST['bday'];
+
+                            $insert = "INSERT INTO customer (first_name, last_name, username, user_password, email, sex, date) VALUES ('$first_name', '$last_name', '$username', '$user_password', '$email', '$sex', '$date')";
+                            if (!$query = mysqli_query($conn, $insert)){
+                                echo "Please enter the right credentials";
+                            };
+
+                            $getID = "SELECT * FROM customer WHERE username = '$username'";
+                            $result = mysqli_query($conn, $getID);
+                            $row = mysqli_fetch_array($result);
+                            $customer_id = $row['Customer_ID'];
+                            
+
+
+                            $street_address = '';
+                            if (isset($_POST['street_address'])){
+                                $street_address = $_POST['street_address'];
+                            }
+                            
+                            $city = '';
+                            if (isset($_POST['city'])){
+                                $city = $_POST['city'];
+                            }
+
+                            $state = '';
+                            if (isset($_POST['state'])){
+                                $state = $_POST['state'];
+                            }
+
+                            $zipcode = '';
+                            if (isset($_POST['zipcode'])){
+                                $zipcode = $_POST['zipcode'];
+                            }
+
+                            $country = '';
+                            if (isset($_POST['country'])){
+                                $country = $_POST['country'];
+                            }
+                            
+                            $insert = "INSERT INTO address (customer_id, street_address, city, state, zipcode, country) VALUES ($customer_id, '$street_address', '$city', '$state', $zipcode, '$country')";
+                            $result = mysqli_query($conn, $insert);
+
+                        }
+                    
+                    ?>
+
                 </form>
             </div>
         </div>

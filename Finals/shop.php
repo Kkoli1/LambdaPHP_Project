@@ -2,6 +2,7 @@
     if (isset($_GET['filter_submit'])) {
         // place codes here
     }
+    include ("dbconnect.php");
 ?>
 
 <!DOCTYPE html>
@@ -63,21 +64,32 @@
             <div class="sc-right">
                 <?php
                     // specify no. of items here
-                    $number_of_items = 38;
-                    for ($i = 0; $i < $number_of_items; $i++) {
+                    $query = "SELECT * FROM inventory WHERE category = 'ECOMMERCE';";
+                    $result = mysqli_query($conn, $query);
+                    $photoFile = "";
+                    if (mysqli_num_rows($result) > 0){
+                        while ($qValue = mysqli_fetch_assoc($result)){
+                            $photoQ = "SELECT * FROM product_photos WHERE product_id =".$qValue['product_id'];
+                            
+                            $photoR = mysqli_query($conn, $photoQ);
+                            if(mysqli_num_rows($photoR) > 0){
+                                $pValue = mysqli_fetch_assoc($photoR);
+                                $photoFile = "Items/".$pValue['filename']; 
+                            }
                         ?>
-                            <a href="http://www.facebook.com/Ahkiiiii/" target="_blank">
+                            <a href="" target="_blank">
                                 <div class="shop-items">
                                     <div class="si-upper">
-                                        <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
+                                        <img src=<?php echo $photoFile;?> alt="DesignMaterials/Icons/image_black_24dp.svg">
                                     </div>
                                     <div class="si-lower">
-                                        <h3>Akio Item <?php echo $i + 1; ?></h3>
-                                        <h2>Php 7.69</h2>
+                                        <h3><?php echo $qValue['item_name']; ?></h3>
+                                        <h2>Php <?php echo $qValue['price']; ?></h2>
                                     </div>
                                 </div>
                             <a>
                         <?php
+                        }
                     }
                 ?>
             </div>

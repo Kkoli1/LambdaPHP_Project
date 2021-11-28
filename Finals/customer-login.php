@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include("dbconnect.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,19 +39,38 @@
                 <div class="admin-login-img">
                     <img src="DesignMaterials/Icons/outline_account_circle_white_48dp.png" alt="">
                 </div>
-                <form action="#" method="post" class="form">  
+                <form action="#" method="POST" class="form">  
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Username" style="border-radius: 20px;">
+                        <input type="text" class="form-control" name= "username" id="floatingInput" placeholder="Username" style="border-radius: 20px;">
                         <label for="floatingInput">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" style="border-radius: 20px;">
+                        <input type="password" class="form-control" name= "password" id="floatingPassword" placeholder="Password" style="border-radius: 20px;">
                         <label for="floatingPassword">Password</label>
                     </div>
-                    <input type="submit" value="LOGIN" class="btn btn-primary" style="margin-top: 15px;" id="submit-button">
+                    <input  type="submit" value="LOGIN"  name="submit" class="btn btn-primary" style="margin-top: 15px;" id="submit-button">
                     <br>
                     <a href="customer-register.php" id="register-button-link"><div id="register-button" style="margin-top: 15px;">REGISTER</div></a>
                     <!-- <input type="button" value="REGISTER" class="btn btn-primary" style="margin-top: 15px;" id="register-button"> -->
+                    <?php 
+                    
+                    if (isset($_POST['submit'])){
+                        $username = $_POST['username'];
+                        $password = sha1($_POST['password']);
+                        $query = sprintf("SELECT * from customer WHERE username ='%s' AND user_password = '%s'", mysqli_real_escape_string($conn, $username), mysqli_real_escape_string($conn, $password));
+                        $result = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($result) != 0){
+                            $qValue = mysqli_fetch_assoc($result);
+                            $_SESSION['user'] = $qValue;
+                            header('Location: mainscreen.php');
+                        } else {
+                            echo "<h4 style = 'color:red;'>Invalid Credentials </h4>"; 
+                            session_destroy();
+                        }
+                    }
+                    
+                    
+                    ?>
                 </form> 
             </div>  
         </div>

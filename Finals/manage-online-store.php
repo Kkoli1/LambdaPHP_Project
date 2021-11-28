@@ -53,7 +53,6 @@ $result = mysqli_query($conn, $query);
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
-                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <label for="item-price">Price:</label>
                         <input type="text" name="item_price" id="item-price">
                     </div>
@@ -86,10 +85,14 @@ $result = mysqli_query($conn, $query);
                             $qValue = mysqli_fetch_array($read);
                             $business_id = $qValue['product_id'];
                             for($i = 0; $i < $upload_count; $i++){
-                                $filename = $_FILES['item_group']['name'][$i];
-                                $upload = move_uploaded_file($_FILES['item_group']['tmp_name'][$i], $dir. "/". $_FILES['item_group']['name'][$i]);
-                                $insert = "INSERT INTO product_photos (product_id, filename) values ($business_id, '$filename')";
-                                $query = mysqli_query($conn, $insert);
+                                if ($_FILES['item_group']['size'][$i] != 0){
+                                    $filename = $_FILES['item_group']['name'][$i];
+                                    $upload = move_uploaded_file($_FILES['item_group']['tmp_name'][$i], $dir. "/". $_FILES['item_group']['name'][$i]);
+                                    $insert = "INSERT INTO product_photos (product_id, filename) values ($business_id, '$filename')";
+                                    $query = mysqli_query($conn, $insert);
+                                } else {
+                                    continue;
+                                }
                             }
 
                             header("Location: manage-online-store.php");

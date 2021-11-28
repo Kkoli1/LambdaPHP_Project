@@ -1,6 +1,12 @@
 <?php
+    session_start();
     if (isset($_GET['search_submit'])) {
         // place codes here
+    }
+
+    if(isset($_GET['logout'])){
+        unset($_SESSION['user']);
+        session_destroy();
     }
 ?>
 
@@ -37,8 +43,18 @@
             <div></div>
             <div class="icons">
                 <a href="cart.php"><img src="DesignMaterials/Icons/shopping_cart_white_24dp.svg" alt="shopping cart icon"></a>
-                <a href="customer-register.php"><img src="DesignMaterials/Icons/account_circle_white_24dp.svg" alt="account icon"></a>
-                <a href="customer-login.php" class="icons-login">LOGIN</a>
+                <?php 
+                
+                    if(isset($_SESSION['user'])){
+                        echo '<img src="DesignMaterials/Icons/account_circle_green_24dp.png" alt="account icon"></a>';
+                        echo '<a href="mainscreen.php?logout=1" class="icons-login">LOGOUT</a>';
+                    } else {
+                        echo '<img src="DesignMaterials/Icons/account_circle_white_24dp.svg" alt="account icon"></a>';
+                        echo '<a href="customer-login.php" class="icons-login">LOGIN</a>';
+                    }
+                
+                ?>
+                
             </div>
             <div class="yellow-button" id="explore-button">
                 <a href="explore-list.php">EXPLORE</a>
@@ -71,14 +87,14 @@
                 </div>
             </div>
             <div class="main-nav-button" id="main-shop-button">
-                <a href="shop.php">
+                <a href="explore_other.php">
                     <div id="out">
                         <div id="in">SHOPS</div>
                     </div>
                 </a>
             </div>
             <div class="main-nav-button" id="main-restaurant-button">
-                <a href="food.php">
+                <a href="explore_food.php">
                     <div id="out">
                         <div id="in">RESTAURANTS</div>
                     </div>

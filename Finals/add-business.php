@@ -65,8 +65,8 @@
                             <option value="RESTAURANT">RESTAURANT</option>
                             <option value="ADMIN">ADMIN</option>
                             <option value="SERVICES">SERVICES</option>
-                            <option value="GENEREAL">GENERAL</option>
-                            <option value="ADMIN">CLOTHING</option>
+                            <option value="GENERAL">GENERAL</option>
+                            <option value="CLOTHING">CLOTHING</option>
                         </select>
                     </div>
                     <div class="add-password">

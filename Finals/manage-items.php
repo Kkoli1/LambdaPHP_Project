@@ -52,7 +52,6 @@ $result = mysqli_query($conn, $query);
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
-                        <input type="file" name="item_group[]" id="item-group" placeholder="Sample Group 1">
                         <label for="item-price">Price:</label>
                         <input type="text" name="item_price" id="item-price">
                     </div>
