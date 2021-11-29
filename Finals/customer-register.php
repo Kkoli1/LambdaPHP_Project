@@ -41,10 +41,9 @@
                 </div>
                 <form action="" method="POST" class="register-form">
                     
-                    <div class="contain">
-                        <input type="text" placeholder="First Name" name="first_name" class="inputs">
-                        <input type="text" placeholder="Last Name" name="last_name" class="inputs">
-                    </div>
+                    
+                    <input type="text" placeholder="First Name" name="first_name" class="inputs">
+                    <input type="text" placeholder="Last Name" name="last_name" class="inputs">
                     <input type="text" placeholder="Username" name="username" class="inputs">
                     <input type="password" placeholder="Password" name="password" class="inputs">
                     <input type="password" placeholder="Confirm Password" name="confirmpassword" class="inputs">

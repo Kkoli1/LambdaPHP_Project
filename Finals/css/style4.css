@@ -115,11 +115,17 @@ body {
     font-size: 15px;
 }
 
+
 .contain{
     display: flex;
     width: 400px;
     justify-content: space-between;
+    align-items: center;
     margin: 10px auto 0 auto;
+}
+
+#contain-first{
+    flex-direction: column;
 }
 
 #register-submit{

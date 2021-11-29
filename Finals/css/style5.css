@@ -475,11 +475,11 @@
     justify-content: center;
     margin: 12px 20px;
     border: 1px solid rgba(51, 71, 86, 0.3);
+    overflow-y: hidden;
 }
 
 .svc-top div img {
-    width: 50px;
-    opacity: 0.3;
+    width: 100%;
 }
 
 .svc-top h1 {
@@ -536,11 +536,11 @@
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgba(51, 71, 86, 0.3);
+    overflow: hidden;
 }
 
 .svc-bottom-items-top img {
-    width: 70px;
-    opacity: 0.3;
+    width: 90%;
 }
 
 .svc-bottom-items-down {
