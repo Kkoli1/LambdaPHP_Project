@@ -62,7 +62,7 @@ include("dbconnect.php");
 
                 if (mysqli_num_rows($result) > 0){
                     while ($qValue = mysqli_fetch_assoc($result)){
-
+                        $storelink = "store-view.php?business=".$qValue['business_id'];
                     
                 
 
@@ -70,7 +70,7 @@ include("dbconnect.php");
             ?>
 
                 <div class="grid-tile">
-                    <a href="">
+                    <a href=<?php echo $storelink?>>
                         <div class="cinema-poster" id="resto-img">
                             <?php $img = 'BusinessLogos/'.$qValue['photo'];?>
                             <img src=<?php echo $img;?> alt="">

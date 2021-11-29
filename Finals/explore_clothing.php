@@ -19,7 +19,7 @@ include("dbconnect.php");
     <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
     <link rel="stylesheet" href="css/navigation-general.css">
     <link rel="stylesheet" href="css/style4.css">
-    <title>Food</title>
+    <title>Clothing</title>
 </head>
 <body>
     <header class="main-screen-header">
@@ -62,6 +62,7 @@ include("dbconnect.php");
 
                 if (mysqli_num_rows($result) > 0){
                     while ($qValue = mysqli_fetch_assoc($result)){
+                        $storelink = "store-view.php?business=".$qValue['business_id'];
 
                     
                 
@@ -70,7 +71,7 @@ include("dbconnect.php");
             ?>
 
                 <div class="grid-tile">
-                    <a href="">
+                    <a href=<?php echo $storelink?>>
                         <div class="cinema-poster" id="resto-img">
                             <?php $img = 'BusinessLogos/'.$qValue['photo'];?>
                             <img src=<?php echo $img;?> alt="">

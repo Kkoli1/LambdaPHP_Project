@@ -1,3 +1,17 @@
+<?php
+
+include("dbconnect.php");
+
+$business_id = $_GET['business'];
+
+$query = "SELECT * FROM business WHERE business_id = $business_id";
+$result = mysqli_query($conn, $query);
+
+$store = mysqli_fetch_array($result);
+
+$filephoto = "BusinessLogos/".$store['photo'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +24,7 @@
         <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
         <link rel="stylesheet" href="css/navigation-general.css">
         <link rel="stylesheet" href="css/style5.css">
-        <title>Store View</title>
+        <title><?php echo $store['business_name']?></title>
     </head>
     <body>
         <!-- Start of Header -->
@@ -40,10 +54,10 @@
         <div class="store-view-container">
             <div class="svc-top">
                 <div>
-                    <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
+                    <img src=<?php echo $filephoto?> alt="DesignMaterials/Icons/image_black_24dp.svg">
                 </div>
-                <h1>Store Name</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed neque ipsum. Integer semper velit nec faucibus ultricies. Fusce eget sem gravida, mattis est quis, porttitor dui. </p>
+                <h1><?php echo $store['business_name']?></h1>
+                <p><?php echo $store['business_description']?></p>
             </div>
             <div class="svc-mid">
                 <h2>Items</h2>
@@ -52,19 +66,48 @@
             <div class="svc-bottom">
                 <?php
                     // place no. of items here
-                    $n = 14;
-                    for ($i = 0; $i < $n; $i++) {
-                        ?>
+                    $query = "SELECT * FROM inventory WHERE business_id = '$business_id' ";
+                    $result = mysqli_query($conn, $query);
+                    $photoFile = "";
+                    if (mysqli_num_rows($result) > 0){
+                        while ($qValue = mysqli_fetch_assoc($result)){
+                            $photoQ = "SELECT * FROM product_photos WHERE product_id =".$qValue['product_id'];
+                            
+                            $photoR = mysqli_query($conn, $photoQ);
+                            if(mysqli_num_rows($photoR) > 0){
+                                $pValue = mysqli_fetch_assoc($photoR);
+                                $photoFile = "Items/".$pValue['filename']; 
+                            }
+                    
+                            if($qValue['category'] == "ECOMMERCE"){
+                    ?>      
+                            <a href="" target="_blank">
+                                <div class="svc-bottom-items">
+                                    <div class="svc-bottom-items-top">
+                                        <img src=<?php echo $photoFile;?> alt="DesignMaterials/Icons/image_black_24dp.svg">
+                                    </div>
+                                    <div class="svc-bottom-items-down">
+                                        <h2><?php echo $qValue['item_name']; ?></h2>
+                                        <h3>PHP <?php echo $qValue['price']; ?></h3>
+                                    </div>
+                                </div>
+                            <a>
+                            <?php
+                            } else {    
+                            ?>
+
                             <div class="svc-bottom-items">
                                 <div class="svc-bottom-items-top">
-                                    <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
+                                    <img src=<?php echo $photoFile;?> alt="DesignMaterials/Icons/image_black_24dp.svg">
                                 </div>
                                 <div class="svc-bottom-items-down">
-                                    <h2>Sample Item <?php echo ($i + 1); ?></h3>
-                                    <h3>PHP 889.25</h3>
+                                    <h2><?php echo $qValue['item_name']; ?></h2>
+                                    <h3>PHP <?php echo $qValue['price']; ?></h3>
                                 </div>
                             </div>
                         <?php
+                            }
+                        }
                     }
                 ?>
             </div>

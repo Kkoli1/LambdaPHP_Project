@@ -76,8 +76,9 @@
                                 $pValue = mysqli_fetch_assoc($photoR);
                                 $photoFile = "Items/".$pValue['filename']; 
                             }
+                            $itempage = "item.php?item=".$qValue['product_id'];
                         ?>
-                            <a href="" target="_blank">
+                            <a href=<?php echo $itempage;?>>
                                 <div class="shop-items">
                                     <div class="si-upper">
                                         <img src=<?php echo $photoFile;?> alt="DesignMaterials/Icons/image_black_24dp.svg">

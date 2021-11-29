@@ -87,10 +87,14 @@ $result = mysqli_query($conn, $query);
                         $business_id = $qValue['product_id'];
                         
                         for($i = 0; $i < $upload_count; $i++){
-                            $filename = $_FILES['item_group']['name'][$i];
-                            $upload = move_uploaded_file($_FILES['item_group']['tmp_name'][$i], $dir. "/". $_FILES['item_group']['name'][$i]);
-                            $insert = "INSERT INTO product_photos (product_id, filename) values ($business_id, '$filename')";
-                            $query = mysqli_query($conn, $insert);
+                            if ($_FILES['item_group']['size'][$i] != 0){
+                                $filename = $_FILES['item_group']['name'][$i];
+                                $upload = move_uploaded_file($_FILES['item_group']['tmp_name'][$i], $dir. "/". $_FILES['item_group']['name'][$i]);
+                                $insert = "INSERT INTO product_photos (product_id, filename) values ($business_id, '$filename')";
+                                $query = mysqli_query($conn, $insert);
+                            } else {
+                                continue;
+                            }
                         }
 
                         header("Location: manage-items.php");

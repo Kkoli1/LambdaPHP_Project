@@ -2,6 +2,15 @@
     if (isset($_GET['add_to_cart'])) {
         // place codes here
     }
+    $product_id = $_GET['item'];
+    include("dbconnect.php");
+
+    $query = "SELECT * FROM inventory WHERE category = 'ECOMMERCE' AND product_id = $product_id;";
+    $result = mysqli_query($conn, $query);
+    $qValue = mysqli_fetch_array($result);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -47,24 +56,24 @@
         <div class="item-container">
             <div class="ic-left">
                 <!-- Start of Slides -->
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample1.jpeg" alt="item">
-                </div>
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample2.jpeg" alt="item">
-                </div>
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample3.jpeg" alt="item">
-                </div>
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample4.jpeg" alt="item">
-                </div>
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample5.jpeg" alt="item">
-                </div>
-                <div class="slides">
-                    <img src="DesignMaterials/Images/sample6.jpeg" alt="item">
-                </div>
+
+                <?php
+                    $queryphoto = "SELECT * FROM product_photos WHERE product_id = $product_id";
+                    $pResult = mysqli_query($conn, $queryphoto);
+                    if(mysqli_num_rows($pResult)>0){
+                        while ($pValue = mysqli_fetch_assoc($pResult)){
+                            $filename = "Items/".$pValue['filename'];
+                    
+                ?>
+                
+                    <div class="slides">
+                        <img src=<?php echo $filename;?> alt="item">
+                    </div>
+                <?php
+                        }
+                    }
+                ?>
+                
                 <!-- End of Slides -->
 
                 <!-- Previous and Next (Links) -->
@@ -78,36 +87,35 @@
 
                 <!-- Start of Row -->
                 <div class="row">
+
+                    <?php
+                    $queryphoto = "SELECT * FROM product_photos WHERE product_id = $product_id";
+                    $pResult = mysqli_query($conn, $queryphoto);
+                    if(mysqli_num_rows($pResult)>0){
+                        while ($pValue = mysqli_fetch_assoc($pResult)){
+                            $filename = "Items/".$pValue['filename'];
+                    ?>
                     <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample1.jpeg" onclick="currentSlide(1)" alt="View 1">
+                        <img class="demo cursor" src=<?php echo $filename;?> onclick="currentSlide(1)" alt="View 1">
                     </div>
-                    <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample2.jpeg" onclick="currentSlide(2)" alt="View 2">
-                    </div>
-                    <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample3.jpeg" onclick="currentSlide(3)" alt="View 3">
-                    </div>
-                    <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample4.jpeg" onclick="currentSlide(4)" alt="View 4">
-                    </div>
-                    <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample5.jpeg" onclick="currentSlide(5)" alt="View 5">
-                    </div>
-                    <div class="column">
-                        <img class="demo cursor" src="DesignMaterials/Images/sample6.jpeg" onclick="currentSlide(6)" alt="View 6">
-                    </div>
+                    <?php 
+                    
+                        }
+                    }
+                    ?>
+                    
                 </div>
                 <!-- End of Row -->
             </div>
             <div class="ic-right">
-                <h2>Akio Item 1: Limited Edition</h2>
+                <h2><?php echo $qValue['item_name']?></h2>
                 <i class="uil uil-star"></i>
                 <i class="uil uil-star"></i>
                 <i class="uil uil-star"></i>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis nisl ac orci ornare, quis rutrum ipsum pulvinar. Donec vestibulum condimentum erat in finibus. 
+                    <?php echo $qValue['item_description']?> 
                 </p>
-                <h3>Php 7.69</h3>
+                <h3>Php <?php echo $qValue['price']?></h3>
                 <!-- Start of Comments -->
                 <div class="comments">
                     <!-- Start of Comment Slides -->

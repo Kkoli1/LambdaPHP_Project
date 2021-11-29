@@ -22,7 +22,7 @@ include("dbconnect.php");
     <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
     <link rel="stylesheet" href="css/navigation-general.css">
     <link rel="stylesheet" href="css/style4.css">
-    <title>Food</title>
+    <title>Events</title>
 </head>
 <body>
     <header class="main-screen-header">
