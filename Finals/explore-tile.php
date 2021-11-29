@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,11 +32,15 @@
         </div>
         </a>
 
-        <a href="">
+        
         <div class="profile-icon">
-            <img src="DesignMaterials/Icons/account_circle_white_24dp.png" alt="profile icon">
+            <?php if(isset($_SESSION['user'])){ ?>
+                <img src="DesignMaterials/Icons/account_circle_green_24dp.png" alt="profile icon">
+            <?php } else {?>
+                <img src="DesignMaterials/Icons/account_circle_white_24dp.png" alt="profile icon">
+            <?php } ?>
         </div>
-        </a>
+
     </header>
 
     <section class="grid-page-2">

@@ -8,6 +8,8 @@
         unset($_SESSION['user']);
         session_destroy();
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -78,13 +80,16 @@
     <section class="main-page">
         <div class="articles-and-nav">
             <div class="main-article" style="grid-column: 1/span 3; grid-row: 1/span 3;">
+
                 <a href="articles.php" class="main-article-img"><div></div></a>
                 <div class="main-article-label">
                     <div class="text">
                         <h1>Limited Food Restaurant Promos!</h1>
-                        <h5>Receive multiple restaurant promos by following the instructions here.</h5>
+                        <h4>Receive multiple restaurant promos by following the instructions here.</h4>
                     </div>                                                    
                 </div>
+        
+
             </div>
             <div class="main-nav-button" id="main-shop-button">
                 <a href="explore_other.php">
@@ -108,29 +113,35 @@
                 </a>
             </div>
             <div class="sub-article" >
+
                 <a href="#" id="sub-article-img1"><div class="sub-article-img" ></div></a>
                 <div class="sub-article-label">
                     <div class="text1">
                         <h4>Travel Destinations</h4>
                     </div> 
                 </div>
+
             </div>
             <div class="sub-article" >
+
                 <a href="#" id="sub-article-img2"><div class="sub-article-img"></div></a>
                 <div class="sub-article-label">
                     <div class="text2">
                         <h4>Gourmet Foods To Try</h4>
                     </div> 
                 </div>
+
             </div>
             
             <div class="sub-article">
+
                 <a href="#" id="sub-article-img3"><div class="sub-article-img"></div></a>
                 <div class="sub-article-label">
                     <div class="text3">
                         <h4>Vintage Clothes 2021</h4>
                     </div> 
                 </div>
+
             </div>
             <div class="admin-assoc-login">
                 <a href="admin-assoc-login.php" class="admin-assoc-login-button">
