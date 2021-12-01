@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2021 at 08:07 PM
+-- Generation Time: Dec 01, 2021 at 06:50 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -35,6 +35,7 @@ CREATE TABLE `address` (
   `zipcode` int(11) NOT NULL,
   `country` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -81,20 +82,11 @@ CREATE TABLE `business` (
 
 INSERT INTO `business` (`business_id`, `username`, `photo`, `password`, `category`, `business_name`, `business_description`) VALUES
 (1000000, 'Admin', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'ADMIN', 'ABC Mall (Admin)', 'ABC Mall Account Administrator'),
-(1000001, 'ABCMall', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'GENERAL', 'ABC Mall (Business)', 'ABC Mall Account Administrator');
+(1000001, 'ABCMall', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'GENERAL', 'ABC Mall (Business)', 'ABC Mall Department Store');
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `card_information`
---
 
-CREATE TABLE `card_information` (
-  `customer_id` int(11) NOT NULL,
-  `card_company` varchar(255) NOT NULL,
-  `expiration_date` date NOT NULL,
-  `CVV` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -104,8 +96,7 @@ CREATE TABLE `card_information` (
 
 CREATE TABLE `cart` (
   `customer_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -135,12 +126,14 @@ CREATE TABLE `cinema` (
 CREATE TABLE `customer` (
   `Customer_ID` int(11) NOT NULL,
   `first_name` varchar(250) NOT NULL,
-  `middle_name` varchar(250) DEFAULT NULL,
   `last_name` varchar(250) NOT NULL,
   `username` varchar(15) NOT NULL,
   `user_password` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL
+  `email` varchar(250) NOT NULL,
+  `sex` varchar(7) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -150,8 +143,10 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `customer_orders` (
   `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
+  `customer_id` int(11) NOT NULL,
+  `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -160,9 +155,12 @@ CREATE TABLE `customer_orders` (
 --
 
 CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `date_of_delivery` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 
 -- --------------------------------------------------------
 
@@ -177,6 +175,7 @@ CREATE TABLE `events` (
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -194,6 +193,8 @@ CREATE TABLE `inventory` (
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -203,20 +204,31 @@ CREATE TABLE `inventory` (
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total_price` int(11) NOT NULL,
-  `delivery_id` int(11) NOT NULL,
+  `total_price` float NOT NULL,
   `business_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `product_photos`
+--
+
+CREATE TABLE `product_photos` (
+  `product_id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
+  ADD UNIQUE KEY `customer_id_2` (`customer_id`),
   ADD KEY `customer_id` (`customer_id`);
 
 --
@@ -238,11 +250,7 @@ ALTER TABLE `business`
   ADD PRIMARY KEY (`business_id`),
   ADD UNIQUE KEY `username` (`username`);
 
---
--- Indexes for table `card_information`
---
-ALTER TABLE `card_information`
-  ADD KEY `customer_id` (`customer_id`);
+
 
 --
 -- Indexes for table `cart`
@@ -275,7 +283,7 @@ ALTER TABLE `customer_orders`
 -- Indexes for table `delivery`
 --
 ALTER TABLE `delivery`
-  ADD PRIMARY KEY (`delivery_id`);
+  ADD KEY `delivery_ibfk_1` (`order_id`);
 
 --
 -- Indexes for table `events`
@@ -297,10 +305,13 @@ ALTER TABLE `inventory`
 ALTER TABLE `orders`
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `delivery_id` (`delivery_id`),
   ADD KEY `business_id` (`business_id`);
 
-
+--
+-- Indexes for table `product_photos`
+--
+ALTER TABLE `product_photos`
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -328,33 +339,25 @@ ALTER TABLE `cinema`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000016;
 
 --
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
-
---
--- AUTO_INCREMENT for table `delivery`
---
-ALTER TABLE `delivery`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000021;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000001;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
-
-
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000023;
 
 --
 -- Constraints for dumped tables
@@ -372,11 +375,6 @@ ALTER TABLE `address`
 ALTER TABLE `article_home`
   ADD CONSTRAINT `article_home_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
 
---
--- Constraints for table `card_information`
---
-ALTER TABLE `card_information`
-  ADD CONSTRAINT `card_information_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`Customer_ID`);
 
 --
 -- Constraints for table `cart`
@@ -392,6 +390,12 @@ ALTER TABLE `customer_orders`
   ADD CONSTRAINT `customer_orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`Customer_ID`);
 
 --
+-- Constraints for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `customer_orders` (`order_id`);
+
+--
 -- Constraints for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -403,12 +407,13 @@ ALTER TABLE `inventory`
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `customer_orders` (`order_id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `inventory` (`product_id`),
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
   ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`business_id`) REFERENCES `business` (`business_id`);
 
 --
--- Constraints for table `seller`
-
+-- Constraints for table `product_photos`
+--
+ALTER TABLE `product_photos`
+  ADD CONSTRAINT `product_photos_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `inventory` (`product_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
