@@ -1,6 +1,14 @@
 <?php
-
+session_start();
     include("dbconnect.php");
+
+    if (!isset($_SESSION['admin'])){
+        header("Location: admin-assoc-login.php");
+    }
+
+    if (isset($_SESSION['business_id'])){
+        header("Location: assoc-menu.php");
+    }
 
     $query = "SELECT * from events";
     $result = mysqli_query($conn, $query);

@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin'])){
+    header("Location: admin-assoc-login.php");
+}
+
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +56,7 @@
                 <a href="create-article.php"><div class="admin-menu-button" id="update-articles"><h3>Add Articles</h3></div></a>
             </div>      
             <div class="log-out-container">
-                <a href="admin-assoc-login.php"><div class="admin-logout"><h2>Log Out</h2></div></a>
+                <a href="admin-assoc-login.php?logout=logout"><div class="admin-logout"><h2>Log Out</h2></div></a>
             </div>
             
         </div>

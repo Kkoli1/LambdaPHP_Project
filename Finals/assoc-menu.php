@@ -1,5 +1,13 @@
 <?php 
 session_start();
+
+if (isset($_SESSION['admin'])){
+    header("Location: admin-menu.php");
+}
+
+if (!isset($_SESSION['business_id'])){
+    header("Location: admin-assoc-login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +44,10 @@ session_start();
                 <a href="manage-items.php"><div class="admin-menu-button" id="manage-business-info"><h3>Manage Business Information</h3></div></a>
             </div>
             <div class="admin-menu-button-container">
-                <a href="manage-online-store.php"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store</h3></div></a>
+                <a href="manage-online-store.php"><div class="admin-menu-button" id="manage-online-store"><h3>Manage Online Store (e-commerce)</h3></div></a>
             </div> 
             <div class="log-out-container">
-                <a href="assoc-login.php?logout=1"><div class="admin-logout"><h2>Log Out</h2></div></a>
+                <a href="admin-assoc-login.php?logout=1"><div class="admin-logout"><h2>Log Out</h2></div></a>
             </div>
         </div>
     </section>

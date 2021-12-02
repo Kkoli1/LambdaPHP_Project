@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 06:50 AM
+-- Generation Time: Dec 02, 2021 at 04:52 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -36,6 +36,12 @@ CREATE TABLE `address` (
   `country` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`customer_id`, `Street_Address`, `city`, `state`, `zipcode`, `country`) VALUES
+(1000016, 'Blk 24 Lot 16,Kingstown 1 Subd.,Brg. 171', 'District 1, Caloocan City', '', 1400, 'Philippines');
 
 -- --------------------------------------------------------
 
@@ -49,6 +55,13 @@ CREATE TABLE `articles` (
   `body_filename` varchar(255) NOT NULL,
   `photo_filename` varchar(255) NOT NULL DEFAULT 'default.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`article_id`, `title`, `body_filename`, `photo_filename`) VALUES
+(1000012, 'Shopping Can Relieve Stress', 'Shopping Can Relieve Stress.txt', 'Flagship_100_Blog_2880x1800_Apparel.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,11 +95,8 @@ CREATE TABLE `business` (
 
 INSERT INTO `business` (`business_id`, `username`, `photo`, `password`, `category`, `business_name`, `business_description`) VALUES
 (1000000, 'Admin', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'ADMIN', 'ABC Mall (Admin)', 'ABC Mall Account Administrator'),
-(1000001, 'ABCMall', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'GENERAL', 'ABC Mall (Business)', 'ABC Mall Department Store');
-
--- --------------------------------------------------------
-
-
+(1000001, 'ABCMall', 'ABCMall.png', '1484ea79ca1be5eb9b411215d6460f82e6c6425e', 'GENERAL', 'ABC Mall (Business)', 'ABC Mall Department Store'),
+(1000002, 'LIZZYPIZZAABC', 'PizzaShop.jpg', '78ae932ec5653912b1a372b5e6267eb4eeefde56', 'RESTAURANT', 'Lizzys Pizza', 'A family-owned restaurant that serves freshly baked pizzas and pasta.');
 
 -- --------------------------------------------------------
 
@@ -117,6 +127,16 @@ CREATE TABLE `cinema` (
   `cinema_no` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cinema`
+--
+
+INSERT INTO `cinema` (`movie_id`, `movie_name`, `movie_description`, `start_time`, `duration_hours`, `duration_mins`, `file_picture`, `file_trailer`, `cinema_no`) VALUES
+(1000002, 'Spiderman: No Way Home', 'Spider-Man: No Way Home is an upcoming American superhero film based on the Marvel Comics character Spider-Man co-produced by Columbia Pictures and Marvel Studios and distributed by Sony Pictures Releasing.', '19:20:00', 2, 30, 'Spider-Man_No_Way_Home_poster.jpg.webp', 'https://www.youtube.com/embed/JfVOs4VSpmA', 1),
+(1000003, 'Ang Darling Kong Aswang', 'Ang Darling Kong Aswang, a movie where a man found out that his wife is an ASWANG', '10:18:00', 3, 30, 'Ang_Darling_Kong_Aswang_VideoCover.png', 'https://www.youtube.com/embed/bcTv6JsVDgo&t=2s', 5),
+(1000004, 'Arcane', 'Arcane (titled onscreen as Arcane: League of Legends) is a 2021 adult animated streaming television series. It is set in the League of Legends universe. The series was announced at the League of Legends tenth anniversary celebration.', '19:20:00', 2, 10, 'MV5BYmU5OWM5ZTAtNjUzOC00NmUyLTgyOWMtMjlkNjdlMDAzMzU1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/4Ps6nV4wiCE', 2),
+(1000005, 'Enteng Kabisote 10 and The Abangers', 'Enteng Kabisote 10 and the Abangers is a 2016 Filipino superhero fantasy comedy film and the tenth film installment of the Filipino television sitcom Okay Ka, Fairy Ko!. The film was announced on August 2016 with Marlon N. Rivera and Tony Y. Reyes attache', '22:00:00', 1, 30, 'Enteng_Kabisote_10_and_the_Abangers_poster.jpg', 'https://www.youtube.com/embed/umJfswXN2xE&t=1s', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +154,12 @@ CREATE TABLE `customer` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`Customer_ID`, `first_name`, `last_name`, `username`, `user_password`, `email`, `sex`, `date`) VALUES
+(1000016, 'Vincent', 'Emerenciana', 'BossVincent', '1f34db57b40645978f7f6af1224fed9ec2b2163b', 'BossVincent@gmail.com', 'male', '2000-03-30');
 
 -- --------------------------------------------------------
 
@@ -147,7 +173,6 @@ CREATE TABLE `customer_orders` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
@@ -158,9 +183,6 @@ CREATE TABLE `delivery` (
   `order_id` int(11) NOT NULL,
   `date_of_delivery` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-
 
 -- --------------------------------------------------------
 
@@ -176,6 +198,12 @@ CREATE TABLE `events` (
   `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`event_id`, `event_title`, `event_description`, `start_date`, `end_date`) VALUES
+(1000001, '12:12 Twii Dei SALE', 'ABC Mall 3-Day Sale offers up to 80% discounts on selected products.', '2021-12-02', '2021-12-05');
 
 -- --------------------------------------------------------
 
@@ -193,7 +221,12 @@ CREATE TABLE `inventory` (
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `inventory`
+--
 
+INSERT INTO `inventory` (`product_id`, `business_id`, `item_name`, `item_description`, `category`, `price`, `stock`) VALUES
+(1000023, 1000001, 'Magnolia Scented Candle', 'Scented candles which comes with different scents(Bamboo, Cherry, Honey)', 'ECOMMERCE', 350.5, 40);
 
 -- --------------------------------------------------------
 
@@ -219,6 +252,15 @@ CREATE TABLE `product_photos` (
   `product_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_photos`
+--
+
+INSERT INTO `product_photos` (`product_id`, `filename`) VALUES
+(1000023, '1500ml-Huge-Soy-Wax-Made-Luxury-Scented-Candles-with-Magnolia-Natural-Essential-Oils-in-Glass-Jar-Wood-Cover-for-Home-Fragrance.jpg'),
+(1000023, 'Magnolia-Signature-Candle-Bundle.jpg'),
+(1000023, 'magnolia_signature_candle_bundle_2048x.jpg');
 
 --
 -- Indexes for dumped tables
@@ -249,8 +291,6 @@ ALTER TABLE `article_home`
 ALTER TABLE `business`
   ADD PRIMARY KEY (`business_id`),
   ADD UNIQUE KEY `username` (`username`);
-
-
 
 --
 -- Indexes for table `cart`
@@ -321,25 +361,25 @@ ALTER TABLE `product_photos`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000012;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000013;
 
 --
 -- AUTO_INCREMENT for table `business`
 --
 ALTER TABLE `business`
-  MODIFY `business_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000002;
+  MODIFY `business_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000003;
 
 --
 -- AUTO_INCREMENT for table `cinema`
 --
 ALTER TABLE `cinema`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000006;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000016;
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000017;
 
 --
 -- AUTO_INCREMENT for table `customer_orders`
@@ -351,13 +391,13 @@ ALTER TABLE `customer_orders`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000001;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000002;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000023;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000024;
 
 --
 -- Constraints for dumped tables
@@ -374,7 +414,6 @@ ALTER TABLE `address`
 --
 ALTER TABLE `article_home`
   ADD CONSTRAINT `article_home_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
-
 
 --
 -- Constraints for table `cart`

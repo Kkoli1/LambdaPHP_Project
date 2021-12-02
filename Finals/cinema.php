@@ -1,5 +1,14 @@
 <?php
+session_start();
 include ("dbconnect.php");
+
+
+if (isset($_SESSION['admin'])){
+    header("Location: admin-menu.php");
+}
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +59,10 @@ include ("dbconnect.php");
                 <h1>Cinema <span>(Now Showing)</span></h1>
             </div>
 
+            
+
+            <div class="grid-container">
+
             <?php
 
             $query = "SELECT * FROM cinema";
@@ -57,14 +70,11 @@ include ("dbconnect.php");
 
             if (mysqli_num_rows($result) > 0){
                 while ($qValue = mysqli_fetch_assoc($result)){
-
-                
-    
+                    $link = "per-movie.php?movie_id=".$qValue['movie_id'];
             ?>
 
-            <div class="grid-container">
                 <div class="grid-tile">
-                    <a href="">
+                    <a href=<?php echo $link; ?>>
                         <div class="cinema-poster">
                             <?php $img = "Cinema/Posters/".$qValue['file_picture'];?>
                             <img src=<?php echo $img; ?> alt="">
@@ -77,7 +87,7 @@ include ("dbconnect.php");
                 }
             }
             ?>
-            </div>
+        </div>
         </div>
         <div class="right"></div>
     </section>

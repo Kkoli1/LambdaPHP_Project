@@ -4,7 +4,12 @@
         // place codes here
     }
     include ("dbconnect.php");
-    
+    if (isset($_SESSION['admin'])){
+        header("Location: admin-menu.php");
+    }
+    if (isset($_SESSION['business_id'])){
+        header("Location: assoc-menu.php");
+    }
 
 
 

@@ -1,6 +1,16 @@
 
 <?php
+session_start();
 include('dbconnect.php');
+
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
+if (isset($_SESSION['admin'])){
+    header("Location: admin-menu.php");
+}
+
+
 ?>
 
 
@@ -65,6 +75,7 @@ include('dbconnect.php');
                 if (mysqli_num_rows($result) != 0){
                     $qValues = mysqli_fetch_array($result);
                     if ($qValues['category'] == "ADMIN"){
+                        $_SESSION['admin'] = $qValues;
                         header("Location: admin-menu.php");
                     } else {
                         echo "<h4 style = 'color:red;'>User Must be an Admin</h4>";

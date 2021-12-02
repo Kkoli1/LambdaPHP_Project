@@ -1,7 +1,12 @@
 <?php
-
+session_start();
     include("dbconnect.php");
-
+if (!isset($_SESSION['admin'])){
+    header("Location: admin-assoc-login.php");
+}
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
     $query = "SELECT * from cinema";
     $result = mysqli_query($conn, $query);
 
@@ -66,7 +71,7 @@
                             <textarea name="movie_info" id="additional-info" cols="30" rows="10" placeholder="Enter Additional information"></textarea>
                             <div class="file-uploads">
                                 <label for="movie-trailer">Movie Trailer</label>
-                                <input type="file" name="movie_trailer" id="movie-trailer">
+                                <input type="text" name="movie_trailer" id="movie-trailer" placeholder = "change 'watch?v=' to embed/">
                                 <div class="separator"></div>
                                 <label for="movie-poster">Movie Poster</label>
                                 <input type="file" name="movie_poster" id="movie-poster">
@@ -80,19 +85,17 @@
                         <?php 
                         
                         if (isset($_POST['submit'])){
-                            $dir_trail = "Cinema/Trailers";
                             $dir_post = "Cinema/Posters";
-                            $upload_trail = move_uploaded_file($_FILES['movie_trailer']['tmp_name'], $dir_trail. "/". $_FILES['movie_trailer']['name']);
                             $upload_post = move_uploaded_file($_FILES['movie_poster']['tmp_name'], $dir_post. "/". $_FILES['movie_poster']['name']);
                             $moviename = $_POST['movie_title'];
-                            $filename_trail = $_FILES['movie_trailer']['name'];
+                            $link_trail = $_POST['movie_trailer'];
                             $filename_post = $_FILES['movie_poster']['name'];
                             $timestart = $_POST['time_start'];
                             $time_hrs = $_POST['time_duration_hrs'];
                             $time_mins = $_POST['time_duration_mins'];
                             $cinema_num = $_POST['cinema_num'];
                             $movie_info = $_POST['movie_info'];
-                            $insert = "INSERT INTO cinema (movie_name, movie_description, start_time, duration_hours, duration_mins, file_picture, file_trailer, cinema_no) VALUES ('$moviename','$movie_info','$timestart',$time_hrs,$time_mins,'$filename_post','$filename_trail', $cinema_num)";
+                            $insert = "INSERT INTO cinema (movie_name, movie_description, start_time, duration_hours, duration_mins, file_picture, file_trailer, cinema_no) VALUES ('$moviename','$movie_info','$timestart',$time_hrs,$time_mins,'$filename_post','$link_trail', $cinema_num)";
                             
                             if (!mysqli_query($conn, $insert)){
                                 echo("Error description: " . mysqli_error($conn));

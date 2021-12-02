@@ -2,6 +2,14 @@
 session_start();
 include("dbconnect.php");
 
+
+if (isset($_SESSION['admin'])){
+    header("Location: admin-menu.php");
+}
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
+
 $customer_id = $_SESSION['user']['Customer_ID'];
 $product_id = $_GET['product_id'];
 $order_id = $_GET['order_id'];

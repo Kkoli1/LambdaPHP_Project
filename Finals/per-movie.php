@@ -1,3 +1,31 @@
+<?php
+session_start();
+if (isset($_SESSION['admin'])){
+    header("Location: admin-menu.php");
+}
+if (isset($_SESSION['business_id'])){
+    header("Location: assoc-menu.php");
+}
+include ("dbconnect.php");
+
+$movie_id = 0;
+if (isset($_GET['movie_id'])){
+
+    $movie_id = $_GET['movie_id'];
+    $query = "SELECT * FROM cinema WHERE movie_id = $movie_id;";
+    $result = mysqli_query($conn, $query);
+    $movieInfo = mysqli_fetch_array($result);
+    $movie_name = $movieInfo['movie_name'];
+    $movie_desc = $movieInfo['movie_description'];
+    $start_time = $movieInfo['start_time'];
+    $duration = $movieInfo['duration_hours']."hrs ".$movieInfo['duration_mins']."mins";
+    $cinema_no = $movieInfo['cinema_no'];
+
+    $movie_trailer = $movieInfo['file_trailer'];
+    $file_poster = "Cinema/Posters/".$movieInfo['file_picture'];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +38,7 @@
         <link rel="icon" href="https://i.pinimg.com/originals/b1/47/47/b147478668fcb07bd72b253f178e3a01.png">
         <link rel="stylesheet" href="css/navigation-general.css">
         <link rel="stylesheet" href="css/style5.css">
-        <title>Movie 1</title>
+        <title><?php echo $movie_name;?></title>
     </head>
     <body>
         <!-- Start of Header -->
@@ -36,34 +64,39 @@
         </header>
         <!-- End of Header -->
 
-        <h1 id="movie-name">Movie 1</h1>
+        <h1 id="movie-name"><?php echo $movie_name;?></h1>
         <!-- Start of Per Movie Container -->
         <div class="per-movie-container">
             <div class="pmc-left">
                 <h3>Video Trailer</h3>
                 <div>
-                    <video controls>
-                        <source src="Cinema/Trailers/sample.mp4" type="video/mp4">
-                    </video>
+                
+                    <iframe width="650" height="484" src=<?php echo $movie_trailer?> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="pmc-right">
                 <h3>Poster & Details</h3>
                 <div class="pmc-right-inner">
                     <div class="top">
-                        <img src="DesignMaterials/Icons/image_black_24dp.svg" alt="">
+                        <img src=<?php echo $file_poster;?> alt="DesignMaterials/Icons/image_black_24dp.svg">
                     </div>
                     <div class="bottom">
-                        <h4>Start Time: <span>3:00 AM</span></h4>
-                        <h4>Duration: <span>2hrs 35 mins</span></h4>
-                        <h4>Cinema #: <span>69</span></h4>
+                        <h4>Start Time: <span><?php echo $start_time;?>AM</span></h4>
+                        <h4>Duration: <span><?php echo $duration;?></span></h4>
+                        <h4>Cinema #: <span><?php echo $cinema_no;?></span></h4>
                         <h4>Description: 
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit ac leo sit amet sodales.</span>
+                            <span><?php echo $movie_desc;?></span>
                         </h4>
                     </div>
                 </div>
             </div>
         </div>
+    <?php } else {
+        
+        header("Location: cinema.php");
+
+        }
+    ?>
         <!-- End of Per Movie Container -->
     </body>
 </html>
