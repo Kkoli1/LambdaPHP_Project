@@ -83,7 +83,7 @@ $filephoto = "BusinessLogos/".$store['photo'];
                     if (mysqli_num_rows($result) > 0){
                         while ($qValue = mysqli_fetch_assoc($result)){
                             $photoQ = "SELECT * FROM product_photos WHERE product_id =".$qValue['product_id'];
-                            
+                            $link = "item.php?item=".$qValue['product_id'];
                             $photoR = mysqli_query($conn, $photoQ);
                             if(mysqli_num_rows($photoR) > 0){
                                 $pValue = mysqli_fetch_assoc($photoR);
@@ -92,7 +92,7 @@ $filephoto = "BusinessLogos/".$store['photo'];
                     
                             if($qValue['category'] == "ECOMMERCE"){
                     ?>      
-                            <a href="" target="_blank">
+                            <a href=<?echo $link ?>>
                                 <div class="svc-bottom-items">
                                     <div class="svc-bottom-items-top">
                                         <img src=<?php echo $photoFile;?> alt="DesignMaterials/Icons/image_black_24dp.svg">

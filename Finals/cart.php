@@ -28,11 +28,11 @@ if (isset($_POST['submit'])){
     $insert = "INSERT INTO delivery (order_id, date_of_delivery) VALUES ($order_id, '$newDate')";
     mysqli_query($conn, $insert);
 
-    echo count($_POST['product_id']);
+
     for($i = 0; $i < count($_POST['product_id']); $i++ ){
         
         if($_POST['product_id'][$i] == 0){
-            echo "skipped: ".$_POST['product_id'][$i];
+
             continue;
         }else {
         $product_id = $_POST['product_id'][$i];
@@ -175,10 +175,8 @@ if (!isset($_SESSION['user'])) {
                 </div>
             </div>
 
-        <?php 
-        
+        <?php     
         }    
-        
         ?>
 
         </div>

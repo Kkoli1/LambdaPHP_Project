@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
     if (isset($_GET['search_submit'])) {
         // place codes here
     }
@@ -15,6 +16,17 @@
         unset($_SESSION['user']);
         session_destroy();
     }
+    include("dbconnect.php");
+
+    $articlesR = mysqli_query($conn, "SELECT * FROM article_home");
+    $i = 0;
+    while ($articleInf = mysqli_fetch_assoc($articlesR)){
+        $articles[$i] = $articleInf['article_id'];
+        $i++;
+    }
+
+
+    $dir = "background-image: url('Articles/Photos/";
 
 
 ?>
@@ -88,11 +100,18 @@
         <div class="articles-and-nav">
             <div class="main-article" style="grid-column: 1/span 3; grid-row: 1/span 3;">
 
-                <a href="articles.php" class="main-article-img"><div></div></a>
+
+            <?php 
+            $result = mysqli_query($conn, "SELECT * FROM articles WHERE article_id = $articles[0]");
+            $articleInfor = mysqli_fetch_array($result);
+            $filename = $dir.$articleInfor['photo_filename']."')";
+            $title = $articleInfor['title'];
+            $link = "articles.php?article=".$articles[0];
+            ?>
+                <a href=<?php echo $link ?> class="main-article-img" style = <?php echo $filename?>><div></div></a>
                 <div class="main-article-label">
                     <div class="text">
-                        <h1>Limited Food Restaurant Promos!</h1>
-                        <h4>Receive multiple restaurant promos by following the instructions here.</h4>
+                        <h1><?php echo $title ?></h1>
                     </div>                                                    
                 </div>
         
@@ -121,20 +140,37 @@
             </div>
             <div class="sub-article" >
 
-                <a href="#" id="sub-article-img1"><div class="sub-article-img" ></div></a>
+            <?php 
+            $result = mysqli_query($conn, "SELECT * FROM articles WHERE article_id = $articles[1]");
+            $articleInfor = mysqli_fetch_array($result);
+            $filename = $dir.$articleInfor['photo_filename']."')";
+            $title = $articleInfor['title'];
+            $link = "articles.php?article=".$articles[1];
+            ?>
+
+                <a href=<?php echo $link ?> id="sub-article-img1"><div class="sub-article-img" style = <?php echo $filename?> ></div></a>
                 <div class="sub-article-label">
                     <div class="text1">
-                        <h4>Travel Destinations</h4>
+                        <h4><?php echo $title?></h4>
                     </div> 
                 </div>
 
             </div>
             <div class="sub-article" >
 
-                <a href="#" id="sub-article-img2"><div class="sub-article-img"></div></a>
+            <?php 
+            $result = mysqli_query($conn, "SELECT * FROM articles WHERE article_id = $articles[2]");
+            $articleInfor = mysqli_fetch_array($result);
+            $filename = $dir.$articleInfor['photo_filename']."')";
+            $title = $articleInfor['title'];
+            $link = "articles.php?article=".$articles[2];
+            ?>
+
+
+                <a href=<?php echo $link ?>  id="sub-article-img2"><div class="sub-article-img" style = <?php echo "background-image: url('../Articles/Photos/".$articleInfor['photo_filename']."')" ?>></div></a>
                 <div class="sub-article-label">
                     <div class="text2">
-                        <h4>Gourmet Foods To Try</h4>
+                        <h4><?php echo $title?></h4>
                     </div> 
                 </div>
 
@@ -142,10 +178,19 @@
             
             <div class="sub-article">
 
-                <a href="#" id="sub-article-img3"><div class="sub-article-img"></div></a>
+
+            <?php 
+            $result = mysqli_query($conn, "SELECT * FROM articles WHERE article_id = $articles[3]");
+            $articleInfor = mysqli_fetch_array($result);
+            $filename = $dir.$articleInfor['photo_filename']."')";
+            $title = $articleInfor['title'];
+            $link = "articles.php?article=".$articles[3];
+            ?>
+
+                <a href=<?php echo $link ?>  id="sub-article-img3"><div class="sub-article-img" style = <?php echo $filename?>></div></a>
                 <div class="sub-article-label">
                     <div class="text3">
-                        <h4>Vintage Clothes 2021</h4>
+                        <h4><?php echo $title?></h4>
                     </div> 
                 </div>
 

@@ -1,5 +1,5 @@
 <?php 
-session_start()
+session_start();
 if (isset($_SESSION['business_id'])){
     header("Location: assoc-menu.php");
 }
@@ -7,6 +7,8 @@ if (isset($_SESSION['admin'])){
     header("Location: admin-menu.php");
 }
 
+include("dbconnect.php");
+$article = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,22 +43,49 @@ if (isset($_SESSION['admin'])){
         </a>
         
         <a href="" class="profile-link">
-            <img src="DesignMaterials/Icons/account_circle_white_24dp.png" alt="">
+            <?php if (!isset($_SESSION['user'])){?>
+                <img src="DesignMaterials/Icons/account_circle_white_24dp.png" alt="">
+            <?php } else { ?>
+                <img src="DesignMaterials/Icons/account_circle_green_24dp.png" alt="">
+            <?php } ?>
         </a>
     </header>
 
+
+    <?php 
+    
+    if(isset($_GET['article'])){
+        
+        $article_id = $_GET['article'];
+        $result = mysqli_query($conn, "SELECT * FROM articles WHERE article_id = $article_id");
+        $articleInf = mysqli_fetch_array($result);
+        $filephoto = "background-image: '../Articles/Photos/".$articleInf['photo_filename']."'";
+        $filetext = "Articles/Texts/".$articleInf['body_filename'];
+
+    ?>
     <section class="article-page">
         <div class="left"><a href="mainscreen.php"><b>< Back</b> </a></div>
         <div class="center">
-            <div class="article-img"></div>
-            <h2>Limited Food Restaurant Promos!</h2>
+            <div class="article-img" style = <?php echo $filephoto;?>></div>
+            <h2><?php echo $articleInf['title'] ?></h2>
             <h5 class="article-date-posted">November 3, 2021</h5>
             <h5 class="article-time-read">5 min read</h5>
             <br>
             <br>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta rerum tenetur iure, neque labore odit. Nisi placeat quidem distinctio obcaecati illo totam maxime voluptatum libero sequi neque suscipit ex reprehenderit aperiam quod iusto, laudantium nam expedita rerum id perferendis corporis? Velit ea inventore cupiditate doloremque, quo nostrum consequatur labore quis aliquam, similique, mollitia soluta autem maiores praesentium neque! Nobis sit cum mollitia at culpa quidem quibusdam! Distinctio veritatis nemo odit, suscipit, hic officiis quam officia quo sit quibusdam maxime iusto quidem, amet explicabo ratione? Sint ipsa quae facere sunt expedita itaque dolor velit similique molestias nihil eos possimus vel, necessitatibus excepturi illum commodi alias cumque totam quibusdam culpa? Explicabo in tenetur natus soluta incidunt aut unde dignissimos qui labore officiis? Aliquam ullam molestiae ipsum voluptates, reprehenderit similique vitae maiores fugiat, libero blanditiis provident corrupti molestias laboriosam. Asperiores exercitationem soluta, laudantium accusantium quidem dicta? Quisquam quam sapiente quis beatae illum laboriosam. Ullam rerum deleniti, ipsum suscipit tempora cumque temporibus magni reiciendis officia enim eveniet deserunt inventore molestias alias? Ab veritatis fugit ea adipisci velit corporis porro harum eveniet vitae nisi, voluptas quam molestiae. Iusto quos, maxime error porro culpa qui repudiandae eum. Nulla neque commodi facilis amet voluptatibus error sit?</p>
+            <p> <?php 
+                $file = fopen($filetext, "r") or die("Unable to open file!");
+                echo fread($file, filesize($filetext));
+                fclose ($file);
+             ?> </p>
         </div>
         <div class="right"></div>
     </section>
+    <?php 
+    
+    } else {
+        header("Location: mainscreen.php");
+    }
+    ?>
+
 </body>
 </html>

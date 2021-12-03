@@ -81,7 +81,7 @@ if (isset($_GET['movie_id'])){
                         <img src=<?php echo $file_poster;?> alt="DesignMaterials/Icons/image_black_24dp.svg">
                     </div>
                     <div class="bottom">
-                        <h4>Start Time: <span><?php echo $start_time;?>AM</span></h4>
+                        <h4>Start Time: <span><?php echo $start_time;?></span></h4>
                         <h4>Duration: <span><?php echo $duration;?></span></h4>
                         <h4>Cinema #: <span><?php echo $cinema_no;?></span></h4>
                         <h4>Description: 
